@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package user;
+
+message PingReq {
+  string ping = 1;
+}
+
+message PongResp {
+  string pong = 1;
+}
+
+message UserModel {
+  int64 id = 1;
+  string email = 2;
+  string nickname = 3;
+  string avatar = 4;
+}
+
+message Token {
+  string AccessToken = 1;
+  int64 AccessExpire = 2;
+  int64 RefreshAfter = 3;
+}
+
+// 注册
+message RegisterReq {
+  string email = 1;
+  string nickname = 2;
+  string password = 3;
+  string verify = 4;
+}
+
+message RegisterResp {
+  Token token = 1;
+  UserModel user = 2;
+}
+
+// 登录
+message LoginReq {
+  string email = 1;
+  int32 type = 2;
+  string password = 3;
+}
+
+message LoginResp {
+  Token token = 1;
+  UserModel user = 2;
+}
+
+// 邮箱验证码发送
+message EmailSendReq {
+  string email = 1;
+}
+
+message EmailSendResp {
+  bool ok = 1;
+}
+
+// 判断邮箱是否已注册
+message EmailExistReq {
+  string email = 1;
+}
+
+message EmailExistResp {
+  bool exist = 1;
+}
+
+service User {
+  rpc Ping(PingReq) returns(PongResp);
+  rpc Register(RegisterReq) returns(RegisterResp);
+  rpc Login(LoginReq) returns(LoginResp);
+  rpc EmailSend(EmailSendReq) returns(EmailSendResp);
+  rpc EmailExist(EmailExistReq) returns(EmailExistResp);
+}
