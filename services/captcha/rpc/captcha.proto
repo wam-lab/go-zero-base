@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package captcha;
+
+message CaptchaReq {
+
+}
+
+message CaptchaResp {
+  string key = 1;
+  string data = 2;
+}
+
+message CaptchaVerifyReq {
+  string key = 1;
+  string code = 2;
+}
+
+message CaptchaVerifyResp {
+  bool ok = 1;
+}
+
+service Captcha {
+  rpc CaptchaOne(CaptchaReq) returns (CaptchaResp);
+  rpc CaptchaVerify(CaptchaVerifyReq) returns (CaptchaVerifyResp);
+}
