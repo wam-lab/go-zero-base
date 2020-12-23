@@ -1,0 +1,11 @@
+info(
+	title: "timetable"
+	desc: "timetable with micro service"
+	author: "yguilai"
+	email: "yguilai@foxmail.com"
+	version: "0.0.1"
+)
+
+import "apis/auth.api"
+import "apis/user.api"
+import "apis/captcha.api"
