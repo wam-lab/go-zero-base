@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package auth;
+
+message Request {
+  string ping = 1;
+}
+
+message Response {
+  string pong = 1;
+}
+
+message Token {
+  string AccessToken = 1;
+  int64 AccessExpire = 2;
+  int64 RefreshAfter = 3;
+}
+
+message Claim {
+  string key = 1;
+  string value = 2;
+}
+
+// jwt创建
+message JwtCreateReq {
+  repeated Claim claims = 1;
+}
+
+message JwtCreateResp {
+  Token token = 1;
+}
+
+// jwt验证
+message JwtVerifyReq {
+  string token = 1;
+}
+
+message JwtVerifyResp {
+  bool valid = 1;
+}
+
+// jwt刷新
+message JwtRefreshReq {
+  string token = 1;
+}
+
+message JwtRefreshResp {
+  Token token = 1;
+}
+
+service Auth {
+  rpc Ping(Request) returns(Response);
+  rpc Create(JwtCreateReq) returns(JwtCreateResp);
+  rpc Verify(JwtVerifyReq) returns(JwtVerifyResp);
+  rpc Refresh(JwtRefreshReq) returns(JwtRefreshResp);
+}
