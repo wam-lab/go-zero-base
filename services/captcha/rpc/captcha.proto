@@ -2,8 +2,15 @@ syntax = "proto3";
 
 package captcha;
 
-message CaptchaReq {
+message PingReq {
+  string ping = 1;
+}
 
+message PongResp {
+  string pong = 1;
+}
+
+message CaptchaReq {
 }
 
 message CaptchaResp {
@@ -21,6 +28,7 @@ message CaptchaVerifyResp {
 }
 
 service Captcha {
+  rpc Ping(PingReq) returns(PongResp);
   rpc CaptchaOne(CaptchaReq) returns (CaptchaResp);
   rpc CaptchaVerify(CaptchaVerifyReq) returns (CaptchaVerifyResp);
 }

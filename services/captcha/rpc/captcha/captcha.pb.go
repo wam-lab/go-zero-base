@@ -29,6 +29,100 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+type PingReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Ping string `protobuf:"bytes,1,opt,name=ping,proto3" json:"ping,omitempty"`
+}
+
+func (x *PingReq) Reset() {
+	*x = PingReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_captcha_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PingReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PingReq) ProtoMessage() {}
+
+func (x *PingReq) ProtoReflect() protoreflect.Message {
+	mi := &file_captcha_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PingReq.ProtoReflect.Descriptor instead.
+func (*PingReq) Descriptor() ([]byte, []int) {
+	return file_captcha_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *PingReq) GetPing() string {
+	if x != nil {
+		return x.Ping
+	}
+	return ""
+}
+
+type PongResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Pong string `protobuf:"bytes,1,opt,name=pong,proto3" json:"pong,omitempty"`
+}
+
+func (x *PongResp) Reset() {
+	*x = PongResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_captcha_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PongResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PongResp) ProtoMessage() {}
+
+func (x *PongResp) ProtoReflect() protoreflect.Message {
+	mi := &file_captcha_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PongResp.ProtoReflect.Descriptor instead.
+func (*PongResp) Descriptor() ([]byte, []int) {
+	return file_captcha_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PongResp) GetPong() string {
+	if x != nil {
+		return x.Pong
+	}
+	return ""
+}
+
 type CaptchaReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -38,7 +132,7 @@ type CaptchaReq struct {
 func (x *CaptchaReq) Reset() {
 	*x = CaptchaReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_captcha_proto_msgTypes[0]
+		mi := &file_captcha_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -51,7 +145,7 @@ func (x *CaptchaReq) String() string {
 func (*CaptchaReq) ProtoMessage() {}
 
 func (x *CaptchaReq) ProtoReflect() protoreflect.Message {
-	mi := &file_captcha_proto_msgTypes[0]
+	mi := &file_captcha_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +158,7 @@ func (x *CaptchaReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptchaReq.ProtoReflect.Descriptor instead.
 func (*CaptchaReq) Descriptor() ([]byte, []int) {
-	return file_captcha_proto_rawDescGZIP(), []int{0}
+	return file_captcha_proto_rawDescGZIP(), []int{2}
 }
 
 type CaptchaResp struct {
@@ -79,7 +173,7 @@ type CaptchaResp struct {
 func (x *CaptchaResp) Reset() {
 	*x = CaptchaResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_captcha_proto_msgTypes[1]
+		mi := &file_captcha_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -92,7 +186,7 @@ func (x *CaptchaResp) String() string {
 func (*CaptchaResp) ProtoMessage() {}
 
 func (x *CaptchaResp) ProtoReflect() protoreflect.Message {
-	mi := &file_captcha_proto_msgTypes[1]
+	mi := &file_captcha_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -105,7 +199,7 @@ func (x *CaptchaResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptchaResp.ProtoReflect.Descriptor instead.
 func (*CaptchaResp) Descriptor() ([]byte, []int) {
-	return file_captcha_proto_rawDescGZIP(), []int{1}
+	return file_captcha_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CaptchaResp) GetKey() string {
@@ -134,7 +228,7 @@ type CaptchaVerifyReq struct {
 func (x *CaptchaVerifyReq) Reset() {
 	*x = CaptchaVerifyReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_captcha_proto_msgTypes[2]
+		mi := &file_captcha_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -147,7 +241,7 @@ func (x *CaptchaVerifyReq) String() string {
 func (*CaptchaVerifyReq) ProtoMessage() {}
 
 func (x *CaptchaVerifyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_captcha_proto_msgTypes[2]
+	mi := &file_captcha_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -160,7 +254,7 @@ func (x *CaptchaVerifyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptchaVerifyReq.ProtoReflect.Descriptor instead.
 func (*CaptchaVerifyReq) Descriptor() ([]byte, []int) {
-	return file_captcha_proto_rawDescGZIP(), []int{2}
+	return file_captcha_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CaptchaVerifyReq) GetKey() string {
@@ -188,7 +282,7 @@ type CaptchaVerifyResp struct {
 func (x *CaptchaVerifyResp) Reset() {
 	*x = CaptchaVerifyResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_captcha_proto_msgTypes[3]
+		mi := &file_captcha_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -201,7 +295,7 @@ func (x *CaptchaVerifyResp) String() string {
 func (*CaptchaVerifyResp) ProtoMessage() {}
 
 func (x *CaptchaVerifyResp) ProtoReflect() protoreflect.Message {
-	mi := &file_captcha_proto_msgTypes[3]
+	mi := &file_captcha_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +308,7 @@ func (x *CaptchaVerifyResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptchaVerifyResp.ProtoReflect.Descriptor instead.
 func (*CaptchaVerifyResp) Descriptor() ([]byte, []int) {
-	return file_captcha_proto_rawDescGZIP(), []int{3}
+	return file_captcha_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CaptchaVerifyResp) GetOk() bool {
@@ -228,26 +322,33 @@ var File_captcha_proto protoreflect.FileDescriptor
 
 var file_captcha_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
-	0x07, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x22, 0x0c, 0x0a, 0x0a, 0x43, 0x61, 0x70, 0x74,
-	0x63, 0x68, 0x61, 0x52, 0x65, 0x71, 0x22, 0x33, 0x0a, 0x0b, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68,
-	0x61, 0x52, 0x65, 0x73, 0x70, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x38, 0x0a, 0x10, 0x43,
-	0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x12,
-	0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65,
-	0x79, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x63, 0x6f, 0x64, 0x65, 0x22, 0x23, 0x0a, 0x11, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61,
-	0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x6f, 0x6b,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x02, 0x6f, 0x6b, 0x32, 0x8a, 0x01, 0x0a, 0x07, 0x43,
-	0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x12, 0x37, 0x0a, 0x0a, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68,
-	0x61, 0x4f, 0x6e, 0x65, 0x12, 0x13, 0x2e, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x43,
-	0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x63, 0x61, 0x70, 0x74,
-	0x63, 0x68, 0x61, 0x2e, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x46, 0x0a, 0x0d, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79,
-	0x12, 0x19, 0x2e, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x43, 0x61, 0x70, 0x74, 0x63,
-	0x68, 0x61, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x1a, 0x2e, 0x63, 0x61,
-	0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65, 0x72,
-	0x69, 0x66, 0x79, 0x52, 0x65, 0x73, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x07, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x22, 0x1d, 0x0a, 0x07, 0x50, 0x69, 0x6e, 0x67,
+	0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x70, 0x69, 0x6e, 0x67, 0x22, 0x1e, 0x0a, 0x08, 0x50, 0x6f, 0x6e, 0x67, 0x52,
+	0x65, 0x73, 0x70, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x70, 0x6f, 0x6e, 0x67, 0x22, 0x0c, 0x0a, 0x0a, 0x43, 0x61, 0x70, 0x74, 0x63,
+	0x68, 0x61, 0x52, 0x65, 0x71, 0x22, 0x33, 0x0a, 0x0b, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x38, 0x0a, 0x10, 0x43, 0x61,
+	0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x12, 0x10,
+	0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79,
+	0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x63, 0x6f, 0x64, 0x65, 0x22, 0x23, 0x0a, 0x11, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56,
+	0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x02, 0x6f, 0x6b, 0x32, 0xb7, 0x01, 0x0a, 0x07, 0x43, 0x61,
+	0x70, 0x74, 0x63, 0x68, 0x61, 0x12, 0x2b, 0x0a, 0x04, 0x50, 0x69, 0x6e, 0x67, 0x12, 0x10, 0x2e,
+	0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x50, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x1a,
+	0x11, 0x2e, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x50, 0x6f, 0x6e, 0x67, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x37, 0x0a, 0x0a, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x4f, 0x6e, 0x65,
+	0x12, 0x13, 0x2e, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x43, 0x61, 0x70, 0x74, 0x63,
+	0x68, 0x61, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e,
+	0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x52, 0x65, 0x73, 0x70, 0x12, 0x46, 0x0a, 0x0d, 0x43,
+	0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x12, 0x19, 0x2e, 0x63,
+	0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x2e, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65,
+	0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x1a, 0x2e, 0x63, 0x61, 0x70, 0x74, 0x63, 0x68,
+	0x61, 0x2e, 0x43, 0x61, 0x70, 0x74, 0x63, 0x68, 0x61, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52,
+	0x65, 0x73, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -262,20 +363,24 @@ func file_captcha_proto_rawDescGZIP() []byte {
 	return file_captcha_proto_rawDescData
 }
 
-var file_captcha_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_captcha_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_captcha_proto_goTypes = []interface{}{
-	(*CaptchaReq)(nil),        // 0: captcha.CaptchaReq
-	(*CaptchaResp)(nil),       // 1: captcha.CaptchaResp
-	(*CaptchaVerifyReq)(nil),  // 2: captcha.CaptchaVerifyReq
-	(*CaptchaVerifyResp)(nil), // 3: captcha.CaptchaVerifyResp
+	(*PingReq)(nil),           // 0: captcha.PingReq
+	(*PongResp)(nil),          // 1: captcha.PongResp
+	(*CaptchaReq)(nil),        // 2: captcha.CaptchaReq
+	(*CaptchaResp)(nil),       // 3: captcha.CaptchaResp
+	(*CaptchaVerifyReq)(nil),  // 4: captcha.CaptchaVerifyReq
+	(*CaptchaVerifyResp)(nil), // 5: captcha.CaptchaVerifyResp
 }
 var file_captcha_proto_depIdxs = []int32{
-	0, // 0: captcha.Captcha.CaptchaOne:input_type -> captcha.CaptchaReq
-	2, // 1: captcha.Captcha.CaptchaVerify:input_type -> captcha.CaptchaVerifyReq
-	1, // 2: captcha.Captcha.CaptchaOne:output_type -> captcha.CaptchaResp
-	3, // 3: captcha.Captcha.CaptchaVerify:output_type -> captcha.CaptchaVerifyResp
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	0, // 0: captcha.Captcha.Ping:input_type -> captcha.PingReq
+	2, // 1: captcha.Captcha.CaptchaOne:input_type -> captcha.CaptchaReq
+	4, // 2: captcha.Captcha.CaptchaVerify:input_type -> captcha.CaptchaVerifyReq
+	1, // 3: captcha.Captcha.Ping:output_type -> captcha.PongResp
+	3, // 4: captcha.Captcha.CaptchaOne:output_type -> captcha.CaptchaResp
+	5, // 5: captcha.Captcha.CaptchaVerify:output_type -> captcha.CaptchaVerifyResp
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -288,7 +393,7 @@ func file_captcha_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_captcha_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CaptchaReq); i {
+			switch v := v.(*PingReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -300,7 +405,7 @@ func file_captcha_proto_init() {
 			}
 		}
 		file_captcha_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CaptchaResp); i {
+			switch v := v.(*PongResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -312,7 +417,7 @@ func file_captcha_proto_init() {
 			}
 		}
 		file_captcha_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CaptchaVerifyReq); i {
+			switch v := v.(*CaptchaReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -324,6 +429,30 @@ func file_captcha_proto_init() {
 			}
 		}
 		file_captcha_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CaptchaResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_captcha_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CaptchaVerifyReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_captcha_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CaptchaVerifyResp); i {
 			case 0:
 				return &v.state
@@ -342,7 +471,7 @@ func file_captcha_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_captcha_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -368,6 +497,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CaptchaClient interface {
+	Ping(ctx context.Context, in *PingReq, opts ...grpc.CallOption) (*PongResp, error)
 	CaptchaOne(ctx context.Context, in *CaptchaReq, opts ...grpc.CallOption) (*CaptchaResp, error)
 	CaptchaVerify(ctx context.Context, in *CaptchaVerifyReq, opts ...grpc.CallOption) (*CaptchaVerifyResp, error)
 }
@@ -378,6 +508,15 @@ type captchaClient struct {
 
 func NewCaptchaClient(cc grpc.ClientConnInterface) CaptchaClient {
 	return &captchaClient{cc}
+}
+
+func (c *captchaClient) Ping(ctx context.Context, in *PingReq, opts ...grpc.CallOption) (*PongResp, error) {
+	out := new(PongResp)
+	err := c.cc.Invoke(ctx, "/captcha.Captcha/Ping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *captchaClient) CaptchaOne(ctx context.Context, in *CaptchaReq, opts ...grpc.CallOption) (*CaptchaResp, error) {
@@ -400,6 +539,7 @@ func (c *captchaClient) CaptchaVerify(ctx context.Context, in *CaptchaVerifyReq,
 
 // CaptchaServer is the server API for Captcha service.
 type CaptchaServer interface {
+	Ping(context.Context, *PingReq) (*PongResp, error)
 	CaptchaOne(context.Context, *CaptchaReq) (*CaptchaResp, error)
 	CaptchaVerify(context.Context, *CaptchaVerifyReq) (*CaptchaVerifyResp, error)
 }
@@ -408,6 +548,9 @@ type CaptchaServer interface {
 type UnimplementedCaptchaServer struct {
 }
 
+func (*UnimplementedCaptchaServer) Ping(context.Context, *PingReq) (*PongResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
 func (*UnimplementedCaptchaServer) CaptchaOne(context.Context, *CaptchaReq) (*CaptchaResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CaptchaOne not implemented")
 }
@@ -417,6 +560,24 @@ func (*UnimplementedCaptchaServer) CaptchaVerify(context.Context, *CaptchaVerify
 
 func RegisterCaptchaServer(s *grpc.Server, srv CaptchaServer) {
 	s.RegisterService(&_Captcha_serviceDesc, srv)
+}
+
+func _Captcha_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PingReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CaptchaServer).Ping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/captcha.Captcha/Ping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CaptchaServer).Ping(ctx, req.(*PingReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Captcha_CaptchaOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -459,6 +620,10 @@ var _Captcha_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "captcha.Captcha",
 	HandlerType: (*CaptchaServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Ping",
+			Handler:    _Captcha_Ping_Handler,
+		},
 		{
 			MethodName: "CaptchaOne",
 			Handler:    _Captcha_CaptchaOne_Handler,

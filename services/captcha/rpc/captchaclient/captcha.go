@@ -14,12 +14,15 @@ import (
 )
 
 type (
-	CaptchaReq        = captcha.CaptchaReq
 	CaptchaResp       = captcha.CaptchaResp
 	CaptchaVerifyReq  = captcha.CaptchaVerifyReq
 	CaptchaVerifyResp = captcha.CaptchaVerifyResp
+	PingReq           = captcha.PingReq
+	PongResp          = captcha.PongResp
+	CaptchaReq        = captcha.CaptchaReq
 
 	Captcha interface {
+		Ping(ctx context.Context, in *PingReq) (*PongResp, error)
 		CaptchaOne(ctx context.Context, in *CaptchaReq) (*CaptchaResp, error)
 		CaptchaVerify(ctx context.Context, in *CaptchaVerifyReq) (*CaptchaVerifyResp, error)
 	}
@@ -33,6 +36,11 @@ func NewCaptcha(cli zrpc.Client) Captcha {
 	return &defaultCaptcha{
 		cli: cli,
 	}
+}
+
+func (m *defaultCaptcha) Ping(ctx context.Context, in *PingReq) (*PongResp, error) {
+	client := captcha.NewCaptchaClient(m.cli.Conn())
+	return client.Ping(ctx, in)
 }
 
 func (m *defaultCaptcha) CaptchaOne(ctx context.Context, in *CaptchaReq) (*CaptchaResp, error) {

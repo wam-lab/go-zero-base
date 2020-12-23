@@ -21,6 +21,11 @@ func NewCaptchaServer(svcCtx *svc.ServiceContext) *CaptchaServer {
 	}
 }
 
+func (s *CaptchaServer) Ping(ctx context.Context, in *captcha.PingReq) (*captcha.PongResp, error) {
+	l := logic.NewPingLogic(ctx, s.svcCtx)
+	return l.Ping(in)
+}
+
 func (s *CaptchaServer) CaptchaOne(ctx context.Context, in *captcha.CaptchaReq) (*captcha.CaptchaResp, error) {
 	l := logic.NewCaptchaOneLogic(ctx, s.svcCtx)
 	return l.CaptchaOne(in)
