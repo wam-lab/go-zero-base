@@ -8,15 +8,20 @@ import (
 )
 
 type RedisStore struct {
-	redis *redis.Redis
+	redis  *redis.Redis
+	expire int
 }
 
-func NewRedisStore(redis *redis.Redis) *RedisStore {
-	return &RedisStore{redis: redis}
+func NewRedisStore(redis *redis.Redis, expire int) *RedisStore {
+	// default expire time: 5 minutes
+	if expire == -1 || expire == 0 {
+		expire = 60 * 5
+	}
+	return &RedisStore{redis, expire}
 }
 
 func (s *RedisStore) Set(id string, value string) {
-	err := s.redis.Set(id, value)
+	err := s.redis.Setex(id, value, s.expire)
 	if err != nil {
 		logx.Errorf(fmt.Sprintf("RedisStore set %s:%s failed, err: %v", id, value, err))
 		return
