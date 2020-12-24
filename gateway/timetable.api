@@ -6,6 +6,6 @@ info(
 	version: "0.0.1"
 )
 
-import "apis/auth.api"
+import "apis/jwt.api"
 import "apis/user.api"
 import "apis/captcha.api"

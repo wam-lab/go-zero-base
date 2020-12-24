@@ -24,7 +24,13 @@ func NewCaptchaOneLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Captch
 }
 
 func (l *CaptchaOneLogic) CaptchaOne(in *captcha.CaptchaReq) (*captcha.CaptchaResp, error) {
-	// todo: add your logic here and delete this line
+	id, base64Ca, err := l.svcCtx.Captcha.Generate()
+	if err != nil {
+		return nil, err
+	}
 
-	return &captcha.CaptchaResp{}, nil
+	return &captcha.CaptchaResp{
+		Key: id,
+		Data: base64Ca,
+	}, nil
 }

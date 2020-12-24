@@ -9,11 +9,11 @@ UserRpc:
     Hosts:
       - 127.0.0.1:2379
     Key: user.rpc
-AuthRpc:
+JwtRpc:
   Etcd:
     Hosts:
       - 127.0.0.1:2379
-    Key: auth.rpc
+    Key: jwt.rpc
 CaptchaRpc:
   Etcd:
     Hosts:

@@ -24,7 +24,5 @@ func NewPingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *PingLogic {
 }
 
 func (l *PingLogic) Ping(in *captcha.PingReq) (*captcha.PongResp, error) {
-	// todo: add your logic here and delete this line
-
-	return &captcha.PongResp{}, nil
+	return &captcha.PongResp{Pong: "pong: " + in.Ping}, nil
 }

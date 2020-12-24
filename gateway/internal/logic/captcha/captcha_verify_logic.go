@@ -2,6 +2,9 @@ package logic
 
 import (
 	"context"
+	"github.com/pkg/errors"
+	"github/yguilai/timetable-micro/gateway/internal/common"
+	"github/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
 
 	"github/yguilai/timetable-micro/gateway/internal/svc"
 	"github/yguilai/timetable-micro/gateway/internal/types"
@@ -15,6 +18,10 @@ type CaptchaVerifyLogic struct {
 	svcCtx *svc.ServiceContext
 }
 
+var (
+	ErrCaptchaVerifyFailed = errors.New("Captcha verify answer failed")
+)
+
 func NewCaptchaVerifyLogic(ctx context.Context, svcCtx *svc.ServiceContext) CaptchaVerifyLogic {
 	return CaptchaVerifyLogic{
 		Logger: logx.WithContext(ctx),
@@ -24,7 +31,19 @@ func NewCaptchaVerifyLogic(ctx context.Context, svcCtx *svc.ServiceContext) Capt
 }
 
 func (l *CaptchaVerifyLogic) CaptchaVerify(req types.CaptchaVerifyReq) (*types.CaptchaVerifyResp, error) {
-	// todo: add your logic here and delete this line
+	verify, err := l.svcCtx.CaptchaRpc.CaptchaVerify(l.ctx, &captchaclient.CaptchaVerifyReq{
+		Key:  req.Key,
+		Code: req.Code,
+	})
+	if err != nil {
+		return nil, err
+	}
 
-	return &types.CaptchaVerifyResp{}, nil
+	if !verify.Ok {
+		return nil, ErrCaptchaVerifyFailed
+	}
+
+	return &types.CaptchaVerifyResp{
+		BaseResp: common.NewOkResp(),
+	}, nil
 }

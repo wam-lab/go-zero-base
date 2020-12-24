@@ -13,5 +13,5 @@ type Config struct {
 	}
 	CaptchaRpc zrpc.RpcClientConf
 	UserRpc    zrpc.RpcClientConf
-	AuthRpc    zrpc.RpcClientConf
+	JwtRpc    zrpc.RpcClientConf
 }

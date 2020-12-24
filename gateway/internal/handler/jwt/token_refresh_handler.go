@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
-	"github/yguilai/timetable-micro/gateway/internal/logic/auth"
+	"github/yguilai/timetable-micro/gateway/internal/logic/jwt"
 	"github/yguilai/timetable-micro/gateway/internal/svc"
 )
 

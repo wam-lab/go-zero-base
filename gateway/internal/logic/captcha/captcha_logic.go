@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"github/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
 
 	"github/yguilai/timetable-micro/gateway/internal/svc"
 	"github/yguilai/timetable-micro/gateway/internal/types"
@@ -24,7 +25,16 @@ func NewCaptchaLogic(ctx context.Context, svcCtx *svc.ServiceContext) CaptchaLog
 }
 
 func (l *CaptchaLogic) Captcha() (*types.CaptchaResp, error) {
-	// todo: add your logic here and delete this line
-
-	return &types.CaptchaResp{}, nil
+	captchaResp, err := l.svcCtx.CaptchaRpc.CaptchaOne(l.ctx, &captchaclient.CaptchaReq{})
+	if err != nil {
+		return nil, err
+	}
+	return &types.CaptchaResp{
+		BaseResp: types.BaseResp{
+			Code: 0,
+			Msg:  "ok",
+		},
+		Key:  captchaResp.Key,
+		Data: captchaResp.Data,
+	}, nil
 }
