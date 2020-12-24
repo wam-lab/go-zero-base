@@ -1,5 +1,5 @@
 info(
-    title: "auth api"
+    title: "jwt api"
     desc: "timetable with micro service"
     author: "yguilai"
     email: "yguilai@foxmail.com"

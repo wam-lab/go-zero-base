@@ -1,6 +1,6 @@
 package svc
 
-import "github/yguilai/timetable-micro/services/auth/rpc/internal/config"
+import "github/yguilai/timetable-micro/services/jwt/rpc/internal/config"
 
 type ServiceContext struct {
 	c config.Config

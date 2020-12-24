@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.13.0
-// source: auth.proto
+// source: jwt.proto
 
-package auth
+package jwt
 
 import (
 	context "context"
@@ -40,7 +40,7 @@ type Request struct {
 func (x *Request) Reset() {
 	*x = Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[0]
+		mi := &file_jwt_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -53,7 +53,7 @@ func (x *Request) String() string {
 func (*Request) ProtoMessage() {}
 
 func (x *Request) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[0]
+	mi := &file_jwt_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +66,7 @@ func (x *Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Request.ProtoReflect.Descriptor instead.
 func (*Request) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{0}
+	return file_jwt_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Request) GetPing() string {
@@ -87,7 +87,7 @@ type Response struct {
 func (x *Response) Reset() {
 	*x = Response{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[1]
+		mi := &file_jwt_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -100,7 +100,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[1]
+	mi := &file_jwt_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -113,7 +113,7 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{1}
+	return file_jwt_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Response) GetPong() string {
@@ -136,7 +136,7 @@ type Token struct {
 func (x *Token) Reset() {
 	*x = Token{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[2]
+		mi := &file_jwt_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -149,7 +149,7 @@ func (x *Token) String() string {
 func (*Token) ProtoMessage() {}
 
 func (x *Token) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[2]
+	mi := &file_jwt_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +162,7 @@ func (x *Token) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Token.ProtoReflect.Descriptor instead.
 func (*Token) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{2}
+	return file_jwt_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Token) GetAccessToken() string {
@@ -198,7 +198,7 @@ type Claim struct {
 func (x *Claim) Reset() {
 	*x = Claim{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[3]
+		mi := &file_jwt_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -211,7 +211,7 @@ func (x *Claim) String() string {
 func (*Claim) ProtoMessage() {}
 
 func (x *Claim) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[3]
+	mi := &file_jwt_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -224,7 +224,7 @@ func (x *Claim) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Claim.ProtoReflect.Descriptor instead.
 func (*Claim) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{3}
+	return file_jwt_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Claim) GetKey() string {
@@ -253,7 +253,7 @@ type JwtCreateReq struct {
 func (x *JwtCreateReq) Reset() {
 	*x = JwtCreateReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[4]
+		mi := &file_jwt_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -266,7 +266,7 @@ func (x *JwtCreateReq) String() string {
 func (*JwtCreateReq) ProtoMessage() {}
 
 func (x *JwtCreateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[4]
+	mi := &file_jwt_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -279,7 +279,7 @@ func (x *JwtCreateReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JwtCreateReq.ProtoReflect.Descriptor instead.
 func (*JwtCreateReq) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{4}
+	return file_jwt_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *JwtCreateReq) GetClaims() []*Claim {
@@ -300,7 +300,7 @@ type JwtCreateResp struct {
 func (x *JwtCreateResp) Reset() {
 	*x = JwtCreateResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[5]
+		mi := &file_jwt_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -313,7 +313,7 @@ func (x *JwtCreateResp) String() string {
 func (*JwtCreateResp) ProtoMessage() {}
 
 func (x *JwtCreateResp) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[5]
+	mi := &file_jwt_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -326,7 +326,7 @@ func (x *JwtCreateResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JwtCreateResp.ProtoReflect.Descriptor instead.
 func (*JwtCreateResp) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{5}
+	return file_jwt_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *JwtCreateResp) GetToken() *Token {
@@ -348,7 +348,7 @@ type JwtVerifyReq struct {
 func (x *JwtVerifyReq) Reset() {
 	*x = JwtVerifyReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[6]
+		mi := &file_jwt_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -361,7 +361,7 @@ func (x *JwtVerifyReq) String() string {
 func (*JwtVerifyReq) ProtoMessage() {}
 
 func (x *JwtVerifyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[6]
+	mi := &file_jwt_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -374,7 +374,7 @@ func (x *JwtVerifyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JwtVerifyReq.ProtoReflect.Descriptor instead.
 func (*JwtVerifyReq) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{6}
+	return file_jwt_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *JwtVerifyReq) GetToken() string {
@@ -395,7 +395,7 @@ type JwtVerifyResp struct {
 func (x *JwtVerifyResp) Reset() {
 	*x = JwtVerifyResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[7]
+		mi := &file_jwt_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -408,7 +408,7 @@ func (x *JwtVerifyResp) String() string {
 func (*JwtVerifyResp) ProtoMessage() {}
 
 func (x *JwtVerifyResp) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[7]
+	mi := &file_jwt_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +421,7 @@ func (x *JwtVerifyResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JwtVerifyResp.ProtoReflect.Descriptor instead.
 func (*JwtVerifyResp) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{7}
+	return file_jwt_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *JwtVerifyResp) GetValid() bool {
@@ -443,7 +443,7 @@ type JwtRefreshReq struct {
 func (x *JwtRefreshReq) Reset() {
 	*x = JwtRefreshReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[8]
+		mi := &file_jwt_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -456,7 +456,7 @@ func (x *JwtRefreshReq) String() string {
 func (*JwtRefreshReq) ProtoMessage() {}
 
 func (x *JwtRefreshReq) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[8]
+	mi := &file_jwt_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -469,7 +469,7 @@ func (x *JwtRefreshReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JwtRefreshReq.ProtoReflect.Descriptor instead.
 func (*JwtRefreshReq) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{8}
+	return file_jwt_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *JwtRefreshReq) GetToken() string {
@@ -490,7 +490,7 @@ type JwtRefreshResp struct {
 func (x *JwtRefreshResp) Reset() {
 	*x = JwtRefreshResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_proto_msgTypes[9]
+		mi := &file_jwt_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -503,7 +503,7 @@ func (x *JwtRefreshResp) String() string {
 func (*JwtRefreshResp) ProtoMessage() {}
 
 func (x *JwtRefreshResp) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[9]
+	mi := &file_jwt_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -516,7 +516,7 @@ func (x *JwtRefreshResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JwtRefreshResp.ProtoReflect.Descriptor instead.
 func (*JwtRefreshResp) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{9}
+	return file_jwt_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *JwtRefreshResp) GetToken() *Token {
@@ -526,94 +526,93 @@ func (x *JwtRefreshResp) GetToken() *Token {
 	return nil
 }
 
-var File_auth_proto protoreflect.FileDescriptor
+var File_jwt_proto protoreflect.FileDescriptor
 
-var file_auth_proto_rawDesc = []byte{
-	0x0a, 0x0a, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x61, 0x75,
-	0x74, 0x68, 0x22, 0x1d, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a,
-	0x04, 0x70, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x69, 0x6e,
-	0x67, 0x22, 0x1e, 0x0a, 0x08, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a,
-	0x04, 0x70, 0x6f, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x6e,
-	0x67, 0x22, 0x71, 0x0a, 0x05, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x20, 0x0a, 0x0b, 0x41, 0x63,
-	0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x22, 0x0a, 0x0c,
-	0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x0c, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65,
-	0x12, 0x22, 0x0a, 0x0c, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41, 0x66, 0x74, 0x65, 0x72,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41,
-	0x66, 0x74, 0x65, 0x72, 0x22, 0x2f, 0x0a, 0x05, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x12, 0x10, 0x0a,
-	0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12,
-	0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x33, 0x0a, 0x0c, 0x4a, 0x77, 0x74, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x23, 0x0a, 0x06, 0x63, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x43, 0x6c, 0x61,
-	0x69, 0x6d, 0x52, 0x06, 0x63, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x22, 0x32, 0x0a, 0x0d, 0x4a, 0x77,
-	0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x21, 0x0a, 0x05, 0x74,
-	0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x61, 0x75, 0x74,
-	0x68, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x24,
-	0x0a, 0x0c, 0x4a, 0x77, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x12, 0x14,
-	0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74,
-	0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x25, 0x0a, 0x0d, 0x4a, 0x77, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66,
-	0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x22, 0x25, 0x0a, 0x0d, 0x4a,
-	0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x52, 0x65, 0x71, 0x12, 0x14, 0x0a, 0x05,
-	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b,
-	0x65, 0x6e, 0x22, 0x33, 0x0a, 0x0e, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x21, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e,
-	0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x32, 0xc9, 0x01, 0x0a, 0x04, 0x41, 0x75, 0x74, 0x68,
-	0x12, 0x25, 0x0a, 0x04, 0x50, 0x69, 0x6e, 0x67, 0x12, 0x0d, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x31, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x12, 0x12, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x4a, 0x77, 0x74, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x13, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x4a, 0x77, 0x74,
-	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x31, 0x0a, 0x06, 0x56, 0x65,
-	0x72, 0x69, 0x66, 0x79, 0x12, 0x12, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e, 0x4a, 0x77, 0x74, 0x56,
-	0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x13, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e,
-	0x4a, 0x77, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x73, 0x70, 0x12, 0x34, 0x0a,
-	0x07, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x12, 0x13, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x2e,
-	0x4a, 0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e,
-	0x61, 0x75, 0x74, 0x68, 0x2e, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x52,
-	0x65, 0x73, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+var file_jwt_proto_rawDesc = []byte{
+	0x0a, 0x09, 0x6a, 0x77, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x6a, 0x77, 0x74,
+	0x22, 0x1d, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70,
+	0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x69, 0x6e, 0x67, 0x22,
+	0x1e, 0x0a, 0x08, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70,
+	0x6f, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x6e, 0x67, 0x22,
+	0x71, 0x0a, 0x05, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x20, 0x0a, 0x0b, 0x41, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x41,
+	0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x22, 0x0a, 0x0c, 0x41, 0x63,
+	0x63, 0x65, 0x73, 0x73, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x0c, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65, 0x12, 0x22,
+	0x0a, 0x0c, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41, 0x66, 0x74, 0x65, 0x72, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41, 0x66, 0x74,
+	0x65, 0x72, 0x22, 0x2f, 0x0a, 0x05, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x12, 0x10, 0x0a, 0x03, 0x6b,
+	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x22, 0x32, 0x0a, 0x0c, 0x4a, 0x77, 0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x52, 0x65, 0x71, 0x12, 0x22, 0x0a, 0x06, 0x63, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x6a, 0x77, 0x74, 0x2e, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x52,
+	0x06, 0x63, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x22, 0x31, 0x0a, 0x0d, 0x4a, 0x77, 0x74, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x20, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x6a, 0x77, 0x74, 0x2e, 0x54, 0x6f,
+	0x6b, 0x65, 0x6e, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x24, 0x0a, 0x0c, 0x4a, 0x77,
+	0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f,
+	0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e,
+	0x22, 0x25, 0x0a, 0x0d, 0x4a, 0x77, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
+	0x52, 0x05, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x22, 0x25, 0x0a, 0x0d, 0x4a, 0x77, 0x74, 0x52, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x52, 0x65, 0x71, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x32,
+	0x0a, 0x0e, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x20, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x0a, 0x2e, 0x6a, 0x77, 0x74, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x05, 0x74, 0x6f, 0x6b,
+	0x65, 0x6e, 0x32, 0xc0, 0x01, 0x0a, 0x03, 0x4a, 0x77, 0x74, 0x12, 0x23, 0x0a, 0x04, 0x50, 0x69,
+	0x6e, 0x67, 0x12, 0x0c, 0x2e, 0x6a, 0x77, 0x74, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x0d, 0x2e, 0x6a, 0x77, 0x74, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x2f, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x11, 0x2e, 0x6a, 0x77, 0x74, 0x2e,
+	0x4a, 0x77, 0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x6a,
+	0x77, 0x74, 0x2e, 0x4a, 0x77, 0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x2f, 0x0a, 0x06, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x12, 0x11, 0x2e, 0x6a, 0x77, 0x74,
+	0x2e, 0x4a, 0x77, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e,
+	0x6a, 0x77, 0x74, 0x2e, 0x4a, 0x77, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x32, 0x0a, 0x07, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x12, 0x12, 0x2e, 0x6a,
+	0x77, 0x74, 0x2e, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x52, 0x65, 0x71,
+	0x1a, 0x13, 0x2e, 0x6a, 0x77, 0x74, 0x2e, 0x4a, 0x77, 0x74, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73,
+	0x68, 0x52, 0x65, 0x73, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_auth_proto_rawDescOnce sync.Once
-	file_auth_proto_rawDescData = file_auth_proto_rawDesc
+	file_jwt_proto_rawDescOnce sync.Once
+	file_jwt_proto_rawDescData = file_jwt_proto_rawDesc
 )
 
-func file_auth_proto_rawDescGZIP() []byte {
-	file_auth_proto_rawDescOnce.Do(func() {
-		file_auth_proto_rawDescData = protoimpl.X.CompressGZIP(file_auth_proto_rawDescData)
+func file_jwt_proto_rawDescGZIP() []byte {
+	file_jwt_proto_rawDescOnce.Do(func() {
+		file_jwt_proto_rawDescData = protoimpl.X.CompressGZIP(file_jwt_proto_rawDescData)
 	})
-	return file_auth_proto_rawDescData
+	return file_jwt_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_auth_proto_goTypes = []interface{}{
-	(*Request)(nil),        // 0: auth.Request
-	(*Response)(nil),       // 1: auth.Response
-	(*Token)(nil),          // 2: auth.Token
-	(*Claim)(nil),          // 3: auth.Claim
-	(*JwtCreateReq)(nil),   // 4: auth.JwtCreateReq
-	(*JwtCreateResp)(nil),  // 5: auth.JwtCreateResp
-	(*JwtVerifyReq)(nil),   // 6: auth.JwtVerifyReq
-	(*JwtVerifyResp)(nil),  // 7: auth.JwtVerifyResp
-	(*JwtRefreshReq)(nil),  // 8: auth.JwtRefreshReq
-	(*JwtRefreshResp)(nil), // 9: auth.JwtRefreshResp
+var file_jwt_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_jwt_proto_goTypes = []interface{}{
+	(*Request)(nil),        // 0: jwt.Request
+	(*Response)(nil),       // 1: jwt.Response
+	(*Token)(nil),          // 2: jwt.Token
+	(*Claim)(nil),          // 3: jwt.Claim
+	(*JwtCreateReq)(nil),   // 4: jwt.JwtCreateReq
+	(*JwtCreateResp)(nil),  // 5: jwt.JwtCreateResp
+	(*JwtVerifyReq)(nil),   // 6: jwt.JwtVerifyReq
+	(*JwtVerifyResp)(nil),  // 7: jwt.JwtVerifyResp
+	(*JwtRefreshReq)(nil),  // 8: jwt.JwtRefreshReq
+	(*JwtRefreshResp)(nil), // 9: jwt.JwtRefreshResp
 }
-var file_auth_proto_depIdxs = []int32{
-	3, // 0: auth.JwtCreateReq.claims:type_name -> auth.Claim
-	2, // 1: auth.JwtCreateResp.token:type_name -> auth.Token
-	2, // 2: auth.JwtRefreshResp.token:type_name -> auth.Token
-	0, // 3: auth.Auth.Ping:input_type -> auth.Request
-	4, // 4: auth.Auth.Create:input_type -> auth.JwtCreateReq
-	6, // 5: auth.Auth.Verify:input_type -> auth.JwtVerifyReq
-	8, // 6: auth.Auth.Refresh:input_type -> auth.JwtRefreshReq
-	1, // 7: auth.Auth.Ping:output_type -> auth.Response
-	5, // 8: auth.Auth.Create:output_type -> auth.JwtCreateResp
-	7, // 9: auth.Auth.Verify:output_type -> auth.JwtVerifyResp
-	9, // 10: auth.Auth.Refresh:output_type -> auth.JwtRefreshResp
+var file_jwt_proto_depIdxs = []int32{
+	3, // 0: jwt.JwtCreateReq.claims:type_name -> jwt.Claim
+	2, // 1: jwt.JwtCreateResp.token:type_name -> jwt.Token
+	2, // 2: jwt.JwtRefreshResp.token:type_name -> jwt.Token
+	0, // 3: jwt.Jwt.Ping:input_type -> jwt.Request
+	4, // 4: jwt.Jwt.Create:input_type -> jwt.JwtCreateReq
+	6, // 5: jwt.Jwt.Verify:input_type -> jwt.JwtVerifyReq
+	8, // 6: jwt.Jwt.Refresh:input_type -> jwt.JwtRefreshReq
+	1, // 7: jwt.Jwt.Ping:output_type -> jwt.Response
+	5, // 8: jwt.Jwt.Create:output_type -> jwt.JwtCreateResp
+	7, // 9: jwt.Jwt.Verify:output_type -> jwt.JwtVerifyResp
+	9, // 10: jwt.Jwt.Refresh:output_type -> jwt.JwtRefreshResp
 	7, // [7:11] is the sub-list for method output_type
 	3, // [3:7] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -621,13 +620,13 @@ var file_auth_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_auth_proto_init() }
-func file_auth_proto_init() {
-	if File_auth_proto != nil {
+func init() { file_jwt_proto_init() }
+func file_jwt_proto_init() {
+	if File_jwt_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_auth_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Request); i {
 			case 0:
 				return &v.state
@@ -639,7 +638,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Response); i {
 			case 0:
 				return &v.state
@@ -651,7 +650,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Token); i {
 			case 0:
 				return &v.state
@@ -663,7 +662,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Claim); i {
 			case 0:
 				return &v.state
@@ -675,7 +674,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JwtCreateReq); i {
 			case 0:
 				return &v.state
@@ -687,7 +686,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JwtCreateResp); i {
 			case 0:
 				return &v.state
@@ -699,7 +698,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JwtVerifyReq); i {
 			case 0:
 				return &v.state
@@ -711,7 +710,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JwtVerifyResp); i {
 			case 0:
 				return &v.state
@@ -723,7 +722,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JwtRefreshReq); i {
 			case 0:
 				return &v.state
@@ -735,7 +734,7 @@ func file_auth_proto_init() {
 				return nil
 			}
 		}
-		file_auth_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_jwt_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JwtRefreshResp); i {
 			case 0:
 				return &v.state
@@ -752,20 +751,20 @@ func file_auth_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_auth_proto_rawDesc,
+			RawDescriptor: file_jwt_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_auth_proto_goTypes,
-		DependencyIndexes: file_auth_proto_depIdxs,
-		MessageInfos:      file_auth_proto_msgTypes,
+		GoTypes:           file_jwt_proto_goTypes,
+		DependencyIndexes: file_jwt_proto_depIdxs,
+		MessageInfos:      file_jwt_proto_msgTypes,
 	}.Build()
-	File_auth_proto = out.File
-	file_auth_proto_rawDesc = nil
-	file_auth_proto_goTypes = nil
-	file_auth_proto_depIdxs = nil
+	File_jwt_proto = out.File
+	file_jwt_proto_rawDesc = nil
+	file_jwt_proto_goTypes = nil
+	file_jwt_proto_depIdxs = nil
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -776,182 +775,182 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// AuthClient is the client API for Auth service.
+// JwtClient is the client API for Jwt service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type AuthClient interface {
+type JwtClient interface {
 	Ping(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
 	Create(ctx context.Context, in *JwtCreateReq, opts ...grpc.CallOption) (*JwtCreateResp, error)
 	Verify(ctx context.Context, in *JwtVerifyReq, opts ...grpc.CallOption) (*JwtVerifyResp, error)
 	Refresh(ctx context.Context, in *JwtRefreshReq, opts ...grpc.CallOption) (*JwtRefreshResp, error)
 }
 
-type authClient struct {
+type jwtClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAuthClient(cc grpc.ClientConnInterface) AuthClient {
-	return &authClient{cc}
+func NewJwtClient(cc grpc.ClientConnInterface) JwtClient {
+	return &jwtClient{cc}
 }
 
-func (c *authClient) Ping(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
+func (c *jwtClient) Ping(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, "/auth.Auth/Ping", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/jwt.Jwt/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authClient) Create(ctx context.Context, in *JwtCreateReq, opts ...grpc.CallOption) (*JwtCreateResp, error) {
+func (c *jwtClient) Create(ctx context.Context, in *JwtCreateReq, opts ...grpc.CallOption) (*JwtCreateResp, error) {
 	out := new(JwtCreateResp)
-	err := c.cc.Invoke(ctx, "/auth.Auth/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/jwt.Jwt/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authClient) Verify(ctx context.Context, in *JwtVerifyReq, opts ...grpc.CallOption) (*JwtVerifyResp, error) {
+func (c *jwtClient) Verify(ctx context.Context, in *JwtVerifyReq, opts ...grpc.CallOption) (*JwtVerifyResp, error) {
 	out := new(JwtVerifyResp)
-	err := c.cc.Invoke(ctx, "/auth.Auth/Verify", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/jwt.Jwt/Verify", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authClient) Refresh(ctx context.Context, in *JwtRefreshReq, opts ...grpc.CallOption) (*JwtRefreshResp, error) {
+func (c *jwtClient) Refresh(ctx context.Context, in *JwtRefreshReq, opts ...grpc.CallOption) (*JwtRefreshResp, error) {
 	out := new(JwtRefreshResp)
-	err := c.cc.Invoke(ctx, "/auth.Auth/Refresh", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/jwt.Jwt/Refresh", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AuthServer is the server API for Auth service.
-type AuthServer interface {
+// JwtServer is the server API for Jwt service.
+type JwtServer interface {
 	Ping(context.Context, *Request) (*Response, error)
 	Create(context.Context, *JwtCreateReq) (*JwtCreateResp, error)
 	Verify(context.Context, *JwtVerifyReq) (*JwtVerifyResp, error)
 	Refresh(context.Context, *JwtRefreshReq) (*JwtRefreshResp, error)
 }
 
-// UnimplementedAuthServer can be embedded to have forward compatible implementations.
-type UnimplementedAuthServer struct {
+// UnimplementedJwtServer can be embedded to have forward compatible implementations.
+type UnimplementedJwtServer struct {
 }
 
-func (*UnimplementedAuthServer) Ping(context.Context, *Request) (*Response, error) {
+func (*UnimplementedJwtServer) Ping(context.Context, *Request) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
-func (*UnimplementedAuthServer) Create(context.Context, *JwtCreateReq) (*JwtCreateResp, error) {
+func (*UnimplementedJwtServer) Create(context.Context, *JwtCreateReq) (*JwtCreateResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (*UnimplementedAuthServer) Verify(context.Context, *JwtVerifyReq) (*JwtVerifyResp, error) {
+func (*UnimplementedJwtServer) Verify(context.Context, *JwtVerifyReq) (*JwtVerifyResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Verify not implemented")
 }
-func (*UnimplementedAuthServer) Refresh(context.Context, *JwtRefreshReq) (*JwtRefreshResp, error) {
+func (*UnimplementedJwtServer) Refresh(context.Context, *JwtRefreshReq) (*JwtRefreshResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Refresh not implemented")
 }
 
-func RegisterAuthServer(s *grpc.Server, srv AuthServer) {
-	s.RegisterService(&_Auth_serviceDesc, srv)
+func RegisterJwtServer(s *grpc.Server, srv JwtServer) {
+	s.RegisterService(&_Jwt_serviceDesc, srv)
 }
 
-func _Auth_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Jwt_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Request)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).Ping(ctx, in)
+		return srv.(JwtServer).Ping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth.Auth/Ping",
+		FullMethod: "/jwt.Jwt/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Ping(ctx, req.(*Request))
+		return srv.(JwtServer).Ping(ctx, req.(*Request))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Jwt_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JwtCreateReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).Create(ctx, in)
+		return srv.(JwtServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth.Auth/Create",
+		FullMethod: "/jwt.Jwt/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Create(ctx, req.(*JwtCreateReq))
+		return srv.(JwtServer).Create(ctx, req.(*JwtCreateReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Jwt_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JwtVerifyReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).Verify(ctx, in)
+		return srv.(JwtServer).Verify(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth.Auth/Verify",
+		FullMethod: "/jwt.Jwt/Verify",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Verify(ctx, req.(*JwtVerifyReq))
+		return srv.(JwtServer).Verify(ctx, req.(*JwtVerifyReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_Refresh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Jwt_Refresh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(JwtRefreshReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).Refresh(ctx, in)
+		return srv.(JwtServer).Refresh(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth.Auth/Refresh",
+		FullMethod: "/jwt.Jwt/Refresh",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Refresh(ctx, req.(*JwtRefreshReq))
+		return srv.(JwtServer).Refresh(ctx, req.(*JwtRefreshReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Auth_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.Auth",
-	HandlerType: (*AuthServer)(nil),
+var _Jwt_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "jwt.Jwt",
+	HandlerType: (*JwtServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Ping",
-			Handler:    _Auth_Ping_Handler,
+			Handler:    _Jwt_Ping_Handler,
 		},
 		{
 			MethodName: "Create",
-			Handler:    _Auth_Create_Handler,
+			Handler:    _Jwt_Create_Handler,
 		},
 		{
 			MethodName: "Verify",
-			Handler:    _Auth_Verify_Handler,
+			Handler:    _Jwt_Verify_Handler,
 		},
 		{
 			MethodName: "Refresh",
-			Handler:    _Auth_Refresh_Handler,
+			Handler:    _Jwt_Refresh_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "auth.proto",
+	Metadata: "jwt.proto",
 }

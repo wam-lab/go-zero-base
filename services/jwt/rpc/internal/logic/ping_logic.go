@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/auth/rpc/auth"
-	"github/yguilai/timetable-micro/services/auth/rpc/internal/svc"
+	"github/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
+	"github/yguilai/timetable-micro/services/jwt/rpc/jwt"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +23,8 @@ func NewPingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *PingLogic {
 	}
 }
 
-func (l *PingLogic) Ping(in *auth.Request) (*auth.Response, error) {
+func (l *PingLogic) Ping(in *jwt.Request) (*jwt.Response, error) {
 	// todo: add your logic here and delete this line
 
-	return &auth.Response{}, nil
+	return &jwt.Response{}, nil
 }

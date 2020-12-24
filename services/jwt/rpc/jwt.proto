@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package auth;
+package jwt;
 
 message Request {
   string ping = 1;
@@ -48,7 +48,7 @@ message JwtRefreshResp {
   Token token = 1;
 }
 
-service Auth {
+service Jwt {
   rpc Ping(Request) returns(Response);
   rpc Create(JwtCreateReq) returns(JwtCreateResp);
   rpc Verify(JwtVerifyReq) returns(JwtVerifyResp);

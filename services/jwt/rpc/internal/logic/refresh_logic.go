@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/auth/rpc/auth"
-	"github/yguilai/timetable-micro/services/auth/rpc/internal/svc"
+	"github/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
+	"github/yguilai/timetable-micro/services/jwt/rpc/jwt"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -23,8 +23,8 @@ func NewRefreshLogic(ctx context.Context, svcCtx *svc.ServiceContext) *RefreshLo
 	}
 }
 
-func (l *RefreshLogic) Refresh(in *auth.JwtRefreshReq) (*auth.JwtRefreshResp, error) {
+func (l *RefreshLogic) Refresh(in *jwt.JwtRefreshReq) (*jwt.JwtRefreshResp, error) {
 	// todo: add your logic here and delete this line
 
-	return &auth.JwtRefreshResp{}, nil
+	return &jwt.JwtRefreshResp{}, nil
 }
