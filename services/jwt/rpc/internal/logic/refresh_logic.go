@@ -33,12 +33,15 @@ func (l *RefreshLogic) Refresh(in *jwt.JwtRefreshReq) (*jwt.JwtRefreshResp, erro
 		return nil, err
 	}
 
+	// token claims assert to MapClaims
+	// reset exp and iat field of MapClaims
 	if claims, ok := token.Claims.(jwtGo.MapClaims); ok && token.Valid {
 		now := time.Now().Unix()
 		claims["exp"] = now + ac.AccessExpire
 		claims["iat"] = now
 
 		token.Claims = claims
+		// resign token
 		newTokenString, err := token.SignedString([]byte(ac.AccessSecret))
 		if err != nil {
 			return nil, err

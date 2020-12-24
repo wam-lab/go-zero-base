@@ -14,16 +14,16 @@ import (
 )
 
 type (
+	Token          = jwt.Token
+	JwtCreateReq   = jwt.JwtCreateReq
 	JwtVerifyReq   = jwt.JwtVerifyReq
+	JwtRefreshReq  = jwt.JwtRefreshReq
 	Request        = jwt.Request
 	Response       = jwt.Response
-	Token          = jwt.Token
-	JwtVerifyResp  = jwt.JwtVerifyResp
-	JwtRefreshReq  = jwt.JwtRefreshReq
-	JwtRefreshResp = jwt.JwtRefreshResp
 	Claim          = jwt.Claim
-	JwtCreateReq   = jwt.JwtCreateReq
 	JwtCreateResp  = jwt.JwtCreateResp
+	JwtVerifyResp  = jwt.JwtVerifyResp
+	JwtRefreshResp = jwt.JwtRefreshResp
 
 	Jwt interface {
 		Ping(ctx context.Context, in *Request) (*Response, error)
