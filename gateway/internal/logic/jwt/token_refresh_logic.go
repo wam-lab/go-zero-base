@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"github/yguilai/timetable-micro/gateway/internal/common"
+	"github/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
 
 	"github/yguilai/timetable-micro/gateway/internal/svc"
 	"github/yguilai/timetable-micro/gateway/internal/types"
@@ -24,7 +26,18 @@ func NewTokenRefreshLogic(ctx context.Context, svcCtx *svc.ServiceContext) Token
 }
 
 func (l *TokenRefreshLogic) TokenRefresh() (*types.Token, error) {
-	// todo: add your logic here and delete this line
-
-	return &types.Token{}, nil
+	if token, ok := l.ctx.Value("token").(string); ok && token != "" {
+		refresh, err := l.svcCtx.JwtRpc.Refresh(l.ctx, &jwtclient.JwtRefreshReq{
+			Token: token,
+		})
+		if err != nil {
+			return nil, err
+		}
+		return &types.Token{
+			AccessToken:  refresh.Token.AccessToken,
+			AccessExpire: refresh.Token.AccessExpire,
+			RefreshAfter: refresh.Token.RefreshAfter,
+		}, nil
+	}
+	return nil, common.ErrInvalidToken
 }

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
@@ -11,7 +12,8 @@ import (
 func TokenRefreshHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		l := logic.NewTokenRefreshLogic(r.Context(), ctx)
+		c := context.WithValue(r.Context(), "token", r.Header.Get("Authorization"))
+		l := logic.NewTokenRefreshLogic(c, ctx)
 		resp, err := l.TokenRefresh()
 		if err != nil {
 			httpx.Error(w, err)
