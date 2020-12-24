@@ -25,14 +25,7 @@ func NewVerifyLogic(ctx context.Context, svcCtx *svc.ServiceContext) *VerifyLogi
 }
 
 func (l *VerifyLogic) Verify(in *jwt.JwtVerifyReq) (*jwt.JwtVerifyResp, error) {
-	token, err := jwtGo.Parse(in.Token, func(token *jwtGo.Token) (interface{}, error) {
-		if _, ok := token.Method.(*jwtGo.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-		}
-
-		return []byte(l.svcCtx.Config.Auth.AccessSecret), nil
-	})
-
+	token, err := parseToken(in.Token, l.svcCtx.Config.Auth.AccessSecret)
 	if err != nil {
 		return nil, err
 	}
@@ -41,4 +34,14 @@ func (l *VerifyLogic) Verify(in *jwt.JwtVerifyReq) (*jwt.JwtVerifyResp, error) {
 		return &jwt.JwtVerifyResp{Valid: true}, nil
 	}
 	return &jwt.JwtVerifyResp{Valid: false}, nil
+}
+
+func parseToken(token, secret string) (*jwtGo.Token, error) {
+	return jwtGo.Parse(token, func(token *jwtGo.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwtGo.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+
+		return []byte(secret), nil
+	})
 }
