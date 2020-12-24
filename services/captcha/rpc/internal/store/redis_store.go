@@ -29,6 +29,11 @@ func (s *RedisStore) Set(id string, value string) {
 }
 
 func (s *RedisStore) Get(id string, clear bool) string {
+	if id == "" {
+		logx.Info("RedisStore got a empty key")
+		return ""
+	}
+
 	val, err := s.redis.Get(id)
 	if err != nil {
 		logx.Errorf(fmt.Sprintf("RedisStore get %s failed, err: %v", id, err))
@@ -58,6 +63,9 @@ func (s *RedisStore) Get(id string, clear bool) string {
 }
 
 func (s *RedisStore) Verify(id, answer string, clear bool) bool {
+	if id == "" || answer == "" {
+		return false
+	}
 	ansInRedis := strings.TrimSpace(s.Get(id, clear))
 	return ansInRedis == answer
 }
