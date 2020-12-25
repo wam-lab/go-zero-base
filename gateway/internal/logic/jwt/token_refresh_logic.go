@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"github/yguilai/timetable-micro/gateway/internal/common"
+	"github/yguilai/timetable-micro/common"
 	"github/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
 
 	"github/yguilai/timetable-micro/gateway/internal/svc"
