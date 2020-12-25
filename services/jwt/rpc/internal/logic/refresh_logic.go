@@ -4,6 +4,7 @@ import (
 	"context"
 	jwtGo "github.com/dgrijalva/jwt-go"
 	"github.com/pkg/errors"
+	"github/yguilai/timetable-micro/common"
 	"time"
 
 	"github/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
@@ -28,7 +29,7 @@ func NewRefreshLogic(ctx context.Context, svcCtx *svc.ServiceContext) *RefreshLo
 
 func (l *RefreshLogic) Refresh(in *jwt.JwtRefreshReq) (*jwt.JwtRefreshResp, error) {
 	ac := l.svcCtx.Config.Auth
-	token, err := parseToken(in.Token, ac.AccessSecret)
+	token, err := common.ParseToken(in.Token, ac.AccessSecret)
 	if err != nil {
 		return nil, err
 	}
