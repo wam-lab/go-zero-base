@@ -1,14 +1,14 @@
 package common
 
 import (
-	"fmt"
 	jwtGo "github.com/dgrijalva/jwt-go"
+	"gopkg.in/errgo.v2/fmt/errors"
 )
 
 func ParseToken(token, secret string) (*jwtGo.Token, error) {
 	return jwtGo.Parse(token, func(token *jwtGo.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwtGo.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+			return nil, errors.Newf("unexpected signing method: %v", token.Header["alg"])
 		}
 
 		return []byte(secret), nil
