@@ -19,7 +19,8 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config:     c,
 		CaptchaRpc: captchaclient.NewCaptcha(zrpc.MustNewClient(c.CaptchaRpc)),
+		JwtRpc:    jwtclient.NewJwt(zrpc.MustNewClient(c.JwtRpc)),
+		// TODO: fulfil user rpc
 		//UserRpc:    userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
-		//AuthRpc:    authclient.NewAuth(zrpc.MustNewClient(c.AuthRpc)),
 	}
 }
