@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/tal-tech/go-zero/rest/httpx"
+	"github/yguilai/timetable-micro/common/errory"
 
 	"github/yguilai/timetable-micro/gateway/internal/config"
 	"github/yguilai/timetable-micro/gateway/internal/handler"
@@ -23,6 +25,8 @@ func main() {
 	ctx := svc.NewServiceContext(c)
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()
+	
+	httpx.SetErrorHandler(errory.ErrorHandler)
 
 	handler.RegisterHandlers(server, ctx)
 
