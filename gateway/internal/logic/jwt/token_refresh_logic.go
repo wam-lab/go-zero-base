@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"github/yguilai/timetable-micro/common"
+	"github/yguilai/timetable-micro/common/errory"
 	"github/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
 
 	"github/yguilai/timetable-micro/gateway/internal/svc"
@@ -39,5 +39,5 @@ func (l *TokenRefreshLogic) TokenRefresh() (*types.Token, error) {
 			RefreshAfter: refresh.Token.RefreshAfter,
 		}, nil
 	}
-	return nil, common.ErrInvalidToken
+	return nil, errory.ErrInvalidToken
 }
