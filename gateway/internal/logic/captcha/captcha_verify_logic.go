@@ -39,6 +39,6 @@ func (l *CaptchaVerifyLogic) CaptchaVerify(req types.CaptchaVerifyReq) (*types.C
 	}
 
 	return &types.CaptchaVerifyResp{
-		BaseResp: common.NewOkResp(),
+		BaseResp: types.NewOkResp(),
 	}, nil
 }
