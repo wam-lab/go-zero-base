@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"github/yguilai/timetable-micro/common"
+	"github/yguilai/timetable-micro/common/errory"
 	"github/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
 
 	"github/yguilai/timetable-micro/gateway/internal/svc"
@@ -35,7 +35,7 @@ func (l *CaptchaVerifyLogic) CaptchaVerify(req types.CaptchaVerifyReq) (*types.C
 	}
 
 	if !verify.Ok {
-		return nil, common.ErrCaptchaVerifyFailed
+		return nil, errory.ErrCaptchaVerifyFailed
 	}
 
 	return &types.CaptchaVerifyResp{
