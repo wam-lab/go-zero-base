@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package user;
 
+import "google/protobuf/timestamp.proto";
+
 message PingReq {
   string ping = 1;
 }
@@ -15,6 +17,11 @@ message UserModel {
   string email = 2;
   string nickname = 3;
   string avatar = 4;
+  string ownWords = 5;
+  int32 gender = 6;
+  int32 state = 7;
+  google.protobuf.Timestamp createAt = 8;
+  google.protobuf.Timestamp updateAt = 9;
 }
 
 message Token {

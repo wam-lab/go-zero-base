@@ -14,18 +14,18 @@ import (
 )
 
 type (
-	PingReq        = user.PingReq
-	Token          = user.Token
-	RegisterReq    = user.RegisterReq
-	RegisterResp   = user.RegisterResp
-	LoginReq       = user.LoginReq
-	LoginResp      = user.LoginResp
 	PongResp       = user.PongResp
 	UserModel      = user.UserModel
-	EmailSendReq   = user.EmailSendReq
-	EmailSendResp  = user.EmailSendResp
+	Token          = user.Token
+	LoginReq       = user.LoginReq
 	EmailExistReq  = user.EmailExistReq
 	EmailExistResp = user.EmailExistResp
+	PingReq        = user.PingReq
+	RegisterReq    = user.RegisterReq
+	RegisterResp   = user.RegisterResp
+	LoginResp      = user.LoginResp
+	EmailSendReq   = user.EmailSendReq
+	EmailSendResp  = user.EmailSendResp
 
 	User interface {
 		Ping(ctx context.Context, in *PingReq) (*PongResp, error)

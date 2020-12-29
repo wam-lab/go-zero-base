@@ -1,8 +1,11 @@
 package svc
 
 import (
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/yguilai/timetable-micro/model"
+	"github.com/nsqio/go-nsq"
+	"github.com/tal-tech/go-zero/core/stores/redis"
+	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
+	"github.com/yguilai/timetable-micro/services/user/model"
 	"github.com/yguilai/timetable-micro/services/user/rpc/internal/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -10,32 +13,51 @@ import (
 )
 
 type ServiceContext struct {
-	c  config.Config
-	Db *gorm.DB
+	Conf     config.Config
+	Db       *gorm.DB
+	Redis    *redis.Redis
+	Producer *nsq.Producer
+	JwtRpc   jwtclient.Jwt
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	db, err := gorm.Open(mysql.Open(c.DataSource), &gorm.Config{
+	// new gorm and auto migrate
+	db, err := newGorm(c.DataSource)
+	if err != nil {
+		panic(err)
+	}
+
+	err = model.AutoMigrate(db)
+	if err != nil {
+		panic(err)
+	}
+
+	// nsq producer
+	producer, err := newNsqProducer(c.Nsq.Addr)
+	if err != nil {
+		panic(err)
+	}
+
+	return &ServiceContext{
+		Conf:     c,
+		Db:       db,
+		Redis:    c.RedisConf.NewRedis(),
+		Producer: producer,
+		JwtRpc: jwtclient.NewJwt(zrpc.MustNewClient(c.JwtRpc)),
+	}
+}
+
+func newGorm(dataSource string) (*gorm.DB, error) {
+	// TODO: 利用gorm的DBResolver实现读写分离
+	return gorm.Open(mysql.Open(dataSource), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			TablePrefix:   "ttm_",
 			SingularTable: true,
 		},
 	})
+}
 
-	if err != nil {
-		panic(err)
-	}
-
-	err = db.AutoMigrate(
-		new(model.User),
-		new(model.UserAuth),
-	)
-	if err != nil {
-		logx.Error(err)
-	}
-
-	return &ServiceContext{
-		c:  c,
-		Db: db,
-	}
+func newNsqProducer(addr string) (*nsq.Producer, error) {
+	c := nsq.NewConfig()
+	return nsq.NewProducer(addr, c)
 }
