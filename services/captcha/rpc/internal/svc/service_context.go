@@ -2,8 +2,8 @@ package svc
 
 import (
 	"github.com/mojocn/base64Captcha"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/config"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/store"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/config"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/store"
 	"image/color"
 )
 

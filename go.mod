@@ -1,4 +1,4 @@
-module github/yguilai/timetable-micro
+module github.com/yguilai/timetable-micro
 
 go 1.14
 

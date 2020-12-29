@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/user/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/user/rpc/user"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/user/rpc/user"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )

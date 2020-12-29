@@ -8,7 +8,7 @@ package userclient
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/user/rpc/user"
+	"github.com/yguilai/timetable-micro/services/user/rpc/user"
 
 	"github.com/tal-tech/go-zero/zrpc"
 )

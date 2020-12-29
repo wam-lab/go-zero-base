@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
-	"github/yguilai/timetable-micro/gateway/internal/logic/jwt"
-	"github/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/logic/jwt"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
 )
 
 func TokenRefreshHandler(ctx *svc.ServiceContext) http.HandlerFunc {

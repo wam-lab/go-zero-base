@@ -2,11 +2,11 @@ package logic
 
 import (
 	"context"
-	"github/yguilai/timetable-micro/common/errory"
-	"github/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
+	"github.com/yguilai/timetable-micro/common/errory"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
 
-	"github/yguilai/timetable-micro/gateway/internal/svc"
-	"github/yguilai/timetable-micro/gateway/internal/types"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )

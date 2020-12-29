@@ -2,10 +2,10 @@ package logic
 
 import (
 	"context"
-	"github/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
 
-	"github/yguilai/timetable-micro/gateway/internal/svc"
-	"github/yguilai/timetable-micro/gateway/internal/types"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )

@@ -8,7 +8,7 @@ package jwtclient
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/jwt/rpc/jwt"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwt"
 
 	"github.com/tal-tech/go-zero/zrpc"
 )

@@ -7,10 +7,10 @@ import (
 	"flag"
 	"fmt"
 
-	"github/yguilai/timetable-micro/services/captcha/rpc/captcha"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/config"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/server"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captcha"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/config"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/server"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/zrpc"

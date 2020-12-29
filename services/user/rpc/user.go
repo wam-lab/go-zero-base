@@ -7,10 +7,10 @@ import (
 	"flag"
 	"fmt"
 
-	"github/yguilai/timetable-micro/services/user/rpc/internal/config"
-	"github/yguilai/timetable-micro/services/user/rpc/internal/server"
-	"github/yguilai/timetable-micro/services/user/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/user/rpc/user"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/config"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/server"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/user/rpc/user"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/zrpc"

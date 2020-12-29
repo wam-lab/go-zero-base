@@ -2,10 +2,10 @@ package svc
 
 import (
 	"github.com/tal-tech/go-zero/zrpc"
-	"github/yguilai/timetable-micro/gateway/internal/config"
-	"github/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
-	"github/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
-	"github/yguilai/timetable-micro/services/user/rpc/userclient"
+	"github.com/yguilai/timetable-micro/gateway/internal/config"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
+	"github.com/yguilai/timetable-micro/services/user/rpc/userclient"
 )
 
 type ServiceContext struct {
