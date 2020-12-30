@@ -30,10 +30,7 @@ func (l *CaptchaLogic) Captcha() (*types.CaptchaResp, error) {
 		return nil, err
 	}
 	return &types.CaptchaResp{
-		BaseResp: types.BaseResp{
-			Code: 0,
-			Msg:  "ok",
-		},
+		BaseResp: types.NewOkResp(),
 		Key:  captchaResp.Key,
 		Data: captchaResp.Data,
 	}, nil

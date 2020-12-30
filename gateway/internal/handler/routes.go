@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	auth "github.com/yguilai/timetable-micro/gateway/internal/handler/jwt"
+	auth "github.com/yguilai/timetable-micro/gateway/internal/handler/auth"
 	captcha "github.com/yguilai/timetable-micro/gateway/internal/handler/captcha"
 	user "github.com/yguilai/timetable-micro/gateway/internal/handler/user"
 	"github.com/yguilai/timetable-micro/gateway/internal/svc"
@@ -17,7 +17,7 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/jwt/tokenRefresh",
+				Path:    "/auth/tokenRefresh",
 				Handler: auth.TokenRefreshHandler(serverCtx),
 			},
 		},

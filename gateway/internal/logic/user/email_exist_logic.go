@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"github.com/yguilai/timetable-micro/common/cons"
+	"github.com/yguilai/timetable-micro/services/user/rpc/userclient"
 
 	"github.com/yguilai/timetable-micro/gateway/internal/svc"
 	"github.com/yguilai/timetable-micro/gateway/internal/types"
@@ -24,7 +26,16 @@ func NewEmailExistLogic(ctx context.Context, svcCtx *svc.ServiceContext) EmailEx
 }
 
 func (l *EmailExistLogic) EmailExist(req types.EmailExistReq) (*types.EmailExistResp, error) {
-	// todo: add your logic here and delete this line
+	resp, err := l.svcCtx.UserRpc.EmailExist(l.ctx, &userclient.EmailExistReq{Email: req.Email})
+	if err != nil {
+		return nil, err
+	}
 
-	return &types.EmailExistResp{}, nil
+	br := types.NewBaseResp(cons.EmailNotExists, cons.EmailNotExistsMsg)
+	if resp.Exist {
+		br = types.NewBaseResp(cons.EmailExists, cons.EmailExistsMsg)
+	}
+	return &types.EmailExistResp{
+		BaseResp: br,
+	}, nil
 }

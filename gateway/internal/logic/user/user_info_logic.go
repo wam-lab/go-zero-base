@@ -2,6 +2,10 @@ package logic
 
 import (
 	"context"
+	"github.com/yguilai/timetable-micro/common"
+	"github.com/yguilai/timetable-micro/common/errory"
+	"github.com/yguilai/timetable-micro/services/user/rpc/userclient"
+	"strconv"
 
 	"github.com/yguilai/timetable-micro/gateway/internal/svc"
 	"github.com/yguilai/timetable-micro/gateway/internal/types"
@@ -23,8 +27,27 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) UserInfoL
 	}
 }
 
-func (l *UserInfoLogic) UserInfo() (*types.UserInfoResp, error) {
-	// todo: add your logic here and delete this line
+func (l *UserInfoLogic) UserInfo(token string) (*types.UserInfoResp, error) {
+	claims, err := common.ParseTokenClaims(token, l.svcCtx.Config.Auth.AccessSecret)
+	if err != nil {
+		return nil, err
+	}
 
-	return &types.UserInfoResp{}, nil
+	var id int64
+	if v, ok := claims["id"]; !ok {
+		return nil, errory.ErrInvalidToken
+	} else {
+		id, err = strconv.ParseInt(v.(string), 10, 64)
+	}
+
+	resp, err := l.svcCtx.UserRpc.Info(l.ctx, &userclient.InfoReq{
+		Id: id,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return &types.UserInfoResp{
+		UserBaseResp: convertLocalUserModel(resp.User),
+	}, nil
 }
