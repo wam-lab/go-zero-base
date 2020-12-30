@@ -26,7 +26,7 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogi
 }
 
 func (l *CreateLogic) Create(in *jwt.JwtCreateReq) (*jwt.JwtCreateResp, error) {
-	ac := l.svcCtx.Config.Auth
+	ac := l.svcCtx.Config.JwtAuth
 
 	now := time.Now().Unix()
 	token, err := createJwtToken(now, ac.AccessExpire, ac.AccessSecret, in.Claims)

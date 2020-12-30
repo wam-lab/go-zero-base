@@ -28,7 +28,7 @@ func NewRefreshLogic(ctx context.Context, svcCtx *svc.ServiceContext) *RefreshLo
 }
 
 func (l *RefreshLogic) Refresh(in *jwt.JwtRefreshReq) (*jwt.JwtRefreshResp, error) {
-	ac := l.svcCtx.Config.Auth
+	ac := l.svcCtx.Config.JwtAuth
 	token, err := common.ParseToken(in.Token, ac.AccessSecret)
 	if err != nil {
 		return nil, err

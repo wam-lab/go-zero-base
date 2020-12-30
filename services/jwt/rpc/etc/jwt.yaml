@@ -1,9 +1,9 @@
 Name: jwt.rpc
-ListenOn: 127.0.0.1:8080
+ListenOn: 127.0.0.1:8002
 Etcd:
   Hosts:
-  - 127.0.0.1:2379
+    - 127.0.0.1:2379
   Key: jwt.rpc
-Auth:
+JwtAuth:
   AccessSecret: 8voPF0R4HkV35eeB3h
   AccessExpire: 604800

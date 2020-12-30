@@ -25,7 +25,7 @@ func NewVerifyLogic(ctx context.Context, svcCtx *svc.ServiceContext) *VerifyLogi
 }
 
 func (l *VerifyLogic) Verify(in *jwt.JwtVerifyReq) (*jwt.JwtVerifyResp, error) {
-	token, err := common.ParseToken(in.Token, l.svcCtx.Config.Auth.AccessSecret)
+	token, err := common.ParseToken(in.Token, l.svcCtx.Config.JwtAuth.AccessSecret)
 	if err != nil {
 		return nil, err
 	}
