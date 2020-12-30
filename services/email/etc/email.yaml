@@ -1,6 +1,6 @@
 Name: email.consumer.nsq
 Nsq:
-  Addr: 127.0.0.1:4150
+  Addr: 127.0.0.1:4161
   Topic: email_send
   Channel: send
 Mail:
