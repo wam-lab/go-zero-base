@@ -1,0 +1,11 @@
+Name: email.consumer.nsq
+Nsq:
+  Addr: 127.0.0.1:4150
+  Topic: email_send
+  Channel: send
+Mail:
+  Host: smtp.qq.com
+  Port: 465
+  User: yguilai@foxmail.com
+#  Pass: surwdrrkbcdrbdic
+  Pass: naamjpzoidxbbffa
