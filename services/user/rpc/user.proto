@@ -48,6 +48,8 @@ message LoginReq {
   string email = 1;
   int32 type = 2;
   string password = 3;
+  string key = 4;
+  string code = 5;
 }
 
 message LoginResp {

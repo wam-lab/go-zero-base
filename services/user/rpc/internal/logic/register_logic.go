@@ -70,6 +70,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 		return nil, err
 	}
 
+	tx.Commit()
 	// generate jwt token
 	// ignore create jwt error. So far, frontend should redirect to login page if token is nil
 	token, _ := generateJwtToken(l.ctx, l.svcCtx.JwtRpc, u.ID)

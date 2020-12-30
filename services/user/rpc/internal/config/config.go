@@ -13,5 +13,6 @@ type Config struct {
 		Addr  string
 		Topic string
 	}
-	JwtRpc zrpc.RpcClientConf
+	JwtRpc     zrpc.RpcClientConf
+	CaptchaRpc zrpc.RpcClientConf
 }

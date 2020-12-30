@@ -4,6 +4,7 @@ import (
 	"github.com/nsqio/go-nsq"
 	"github.com/tal-tech/go-zero/core/stores/redis"
 	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
 	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwtclient"
 	"github.com/yguilai/timetable-micro/services/user/model"
 	"github.com/yguilai/timetable-micro/services/user/rpc/internal/config"
@@ -13,11 +14,12 @@ import (
 )
 
 type ServiceContext struct {
-	Conf     config.Config
-	Db       *gorm.DB
-	Redis    *redis.Redis
-	Producer *nsq.Producer
-	JwtRpc   jwtclient.Jwt
+	Conf       config.Config
+	Db         *gorm.DB
+	Redis      *redis.Redis
+	Producer   *nsq.Producer
+	JwtRpc     jwtclient.Jwt
+	CaptchaRpc captchaclient.Captcha
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -32,18 +34,19 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		panic(err)
 	}
 
-	// nsq producer
+	// email producer
 	producer, err := newNsqProducer(c.Nsq.Addr)
 	if err != nil {
 		panic(err)
 	}
 
 	return &ServiceContext{
-		Conf:     c,
-		Db:       db,
-		Redis:    c.RedisConf.NewRedis(),
-		Producer: producer,
-		JwtRpc: jwtclient.NewJwt(zrpc.MustNewClient(c.JwtRpc)),
+		Conf:       c,
+		Db:         db,
+		Redis:      c.RedisConf.NewRedis(),
+		Producer:   producer,
+		JwtRpc:     jwtclient.NewJwt(zrpc.MustNewClient(c.JwtRpc)),
+		CaptchaRpc: captchaclient.NewCaptcha(zrpc.MustNewClient(c.CaptchaRpc)),
 	}
 }
 

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/yguilai/timetable-micro/common"
 	"math/rand"
 	"strings"
 	"time"
@@ -30,33 +31,27 @@ func NewEmailSendLogic(ctx context.Context, svcCtx *svc.ServiceContext) *EmailSe
 
 const EmailKeyPrefix = "email_verify_"
 
-type SendContent struct {
-	Email string
-	Title string
-	Body  string
-}
-
 func (l *EmailSendLogic) EmailSend(in *user.EmailSendReq) (*user.EmailSendResp, error) {
 	// generate random code
 	code := GenerateVerifyCode(6)
 
 	// cache to redis
-	err := l.svcCtx.Redis.Setex(EmailKeyPrefix + in.Email, code, 60*3)
+	err := l.svcCtx.Redis.Setex(EmailKeyPrefix+in.Email, code, 60*3)
 	if err != nil {
 		return nil, err
 	}
 
 	// build send content
-	ctt, err := json.Marshal(&SendContent{
-		Email: in.Email,
-		Title: "[课表] 验证码",
-		Body:  fmt.Sprintf("您的邮箱验证码是: <b>%s</b>", code),
+	ctt, err := json.Marshal(&common.EmailContent{
+		Target: in.Email,
+		Title:  "[课表] 验证码",
+		Body:   fmt.Sprintf("您的邮箱验证码是: <b>%s</b>", code),
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	// publish to nsq queue
+	// publish to email queue
 	err = l.svcCtx.Producer.Publish(l.svcCtx.Conf.Nsq.Topic, ctt)
 	if err != nil {
 		return nil, err
