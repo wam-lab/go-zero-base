@@ -734,6 +734,100 @@ func (x *EmailExistResp) GetExist() bool {
 	return false
 }
 
+type InfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *InfoReq) Reset() {
+	*x = InfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InfoReq) ProtoMessage() {}
+
+func (x *InfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InfoReq.ProtoReflect.Descriptor instead.
+func (*InfoReq) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *InfoReq) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type InfoResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	User *UserModel `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+}
+
+func (x *InfoResp) Reset() {
+	*x = InfoResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InfoResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InfoResp) ProtoMessage() {}
+
+func (x *InfoResp) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InfoResp.ProtoReflect.Descriptor instead.
+func (*InfoResp) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *InfoResp) GetUser() *UserModel {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 var File_user_proto protoreflect.FileDescriptor
 
 var file_user_proto_rawDesc = []byte{
@@ -802,23 +896,30 @@ var file_user_proto_rawDesc = []byte{
 	0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x22, 0x26, 0x0a, 0x0e, 0x45, 0x6d, 0x61,
 	0x69, 0x6c, 0x45, 0x78, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x65,
 	0x78, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x65, 0x78, 0x69, 0x73,
-	0x74, 0x32, 0xf9, 0x01, 0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x25, 0x0a, 0x04, 0x50, 0x69,
-	0x6e, 0x67, 0x12, 0x0d, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x50, 0x69, 0x6e, 0x67, 0x52, 0x65,
-	0x71, 0x1a, 0x0e, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x50, 0x6f, 0x6e, 0x67, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x31, 0x0a, 0x08, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x12, 0x11, 0x2e,
-	0x75, 0x73, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x1a, 0x12, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x28, 0x0a, 0x05, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x0e, 0x2e,
-	0x75, 0x73, 0x65, 0x72, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x0f, 0x2e,
-	0x75, 0x73, 0x65, 0x72, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x34,
-	0x0a, 0x09, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x53, 0x65, 0x6e, 0x64, 0x12, 0x12, 0x2e, 0x75, 0x73,
-	0x65, 0x72, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x53, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x1a,
-	0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x53, 0x65, 0x6e, 0x64,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x37, 0x0a, 0x0a, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x45, 0x78, 0x69,
-	0x73, 0x74, 0x12, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x45,
-	0x78, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45,
-	0x6d, 0x61, 0x69, 0x6c, 0x45, 0x78, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x22, 0x19, 0x0a, 0x07, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0x2f, 0x0a, 0x08,
+	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x23, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x55, 0x73,
+	0x65, 0x72, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x32, 0xa0, 0x02,
+	0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x25, 0x0a, 0x04, 0x50, 0x69, 0x6e, 0x67, 0x12, 0x0d,
+	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x50, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x0e, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x2e, 0x50, 0x6f, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x12, 0x31, 0x0a,
+	0x08, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x12, 0x11, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x75,
+	0x73, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x28, 0x0a, 0x05, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x0e, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x0f, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x25, 0x0a, 0x04, 0x49, 0x6e,
+	0x66, 0x6f, 0x12, 0x0d, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
+	0x71, 0x1a, 0x0e, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x34, 0x0a, 0x09, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x53, 0x65, 0x6e, 0x64, 0x12, 0x12,
+	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x53, 0x65, 0x6e, 0x64, 0x52,
+	0x65, 0x71, 0x1a, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x53,
+	0x65, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x37, 0x0a, 0x0a, 0x45, 0x6d, 0x61, 0x69, 0x6c,
+	0x45, 0x78, 0x69, 0x73, 0x74, 0x12, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x61,
+	0x69, 0x6c, 0x45, 0x78, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x75, 0x73, 0x65,
+	0x72, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x45, 0x78, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -833,7 +934,7 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_user_proto_goTypes = []interface{}{
 	(*PingReq)(nil),             // 0: user.PingReq
 	(*PongResp)(nil),            // 1: user.PongResp
@@ -847,30 +948,35 @@ var file_user_proto_goTypes = []interface{}{
 	(*EmailSendResp)(nil),       // 9: user.EmailSendResp
 	(*EmailExistReq)(nil),       // 10: user.EmailExistReq
 	(*EmailExistResp)(nil),      // 11: user.EmailExistResp
-	(*timestamp.Timestamp)(nil), // 12: google.protobuf.Timestamp
+	(*InfoReq)(nil),             // 12: user.InfoReq
+	(*InfoResp)(nil),            // 13: user.InfoResp
+	(*timestamp.Timestamp)(nil), // 14: google.protobuf.Timestamp
 }
 var file_user_proto_depIdxs = []int32{
-	12, // 0: user.UserModel.createAt:type_name -> google.protobuf.Timestamp
-	12, // 1: user.UserModel.updateAt:type_name -> google.protobuf.Timestamp
+	14, // 0: user.UserModel.createAt:type_name -> google.protobuf.Timestamp
+	14, // 1: user.UserModel.updateAt:type_name -> google.protobuf.Timestamp
 	3,  // 2: user.RegisterResp.token:type_name -> user.Token
 	2,  // 3: user.RegisterResp.user:type_name -> user.UserModel
 	3,  // 4: user.LoginResp.token:type_name -> user.Token
 	2,  // 5: user.LoginResp.user:type_name -> user.UserModel
-	0,  // 6: user.User.Ping:input_type -> user.PingReq
-	4,  // 7: user.User.Register:input_type -> user.RegisterReq
-	6,  // 8: user.User.Login:input_type -> user.LoginReq
-	8,  // 9: user.User.EmailSend:input_type -> user.EmailSendReq
-	10, // 10: user.User.EmailExist:input_type -> user.EmailExistReq
-	1,  // 11: user.User.Ping:output_type -> user.PongResp
-	5,  // 12: user.User.Register:output_type -> user.RegisterResp
-	7,  // 13: user.User.Login:output_type -> user.LoginResp
-	9,  // 14: user.User.EmailSend:output_type -> user.EmailSendResp
-	11, // 15: user.User.EmailExist:output_type -> user.EmailExistResp
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	2,  // 6: user.InfoResp.user:type_name -> user.UserModel
+	0,  // 7: user.User.Ping:input_type -> user.PingReq
+	4,  // 8: user.User.Register:input_type -> user.RegisterReq
+	6,  // 9: user.User.Login:input_type -> user.LoginReq
+	12, // 10: user.User.Info:input_type -> user.InfoReq
+	8,  // 11: user.User.EmailSend:input_type -> user.EmailSendReq
+	10, // 12: user.User.EmailExist:input_type -> user.EmailExistReq
+	1,  // 13: user.User.Ping:output_type -> user.PongResp
+	5,  // 14: user.User.Register:output_type -> user.RegisterResp
+	7,  // 15: user.User.Login:output_type -> user.LoginResp
+	13, // 16: user.User.Info:output_type -> user.InfoResp
+	9,  // 17: user.User.EmailSend:output_type -> user.EmailSendResp
+	11, // 18: user.User.EmailExist:output_type -> user.EmailExistResp
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_user_proto_init() }
@@ -1023,6 +1129,30 @@ func file_user_proto_init() {
 				return nil
 			}
 		}
+		file_user_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InfoResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1030,7 +1160,7 @@ func file_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_user_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1059,6 +1189,7 @@ type UserClient interface {
 	Ping(ctx context.Context, in *PingReq, opts ...grpc.CallOption) (*PongResp, error)
 	Register(ctx context.Context, in *RegisterReq, opts ...grpc.CallOption) (*RegisterResp, error)
 	Login(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginResp, error)
+	Info(ctx context.Context, in *InfoReq, opts ...grpc.CallOption) (*InfoResp, error)
 	EmailSend(ctx context.Context, in *EmailSendReq, opts ...grpc.CallOption) (*EmailSendResp, error)
 	EmailExist(ctx context.Context, in *EmailExistReq, opts ...grpc.CallOption) (*EmailExistResp, error)
 }
@@ -1098,6 +1229,15 @@ func (c *userClient) Login(ctx context.Context, in *LoginReq, opts ...grpc.CallO
 	return out, nil
 }
 
+func (c *userClient) Info(ctx context.Context, in *InfoReq, opts ...grpc.CallOption) (*InfoResp, error) {
+	out := new(InfoResp)
+	err := c.cc.Invoke(ctx, "/user.User/Info", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userClient) EmailSend(ctx context.Context, in *EmailSendReq, opts ...grpc.CallOption) (*EmailSendResp, error) {
 	out := new(EmailSendResp)
 	err := c.cc.Invoke(ctx, "/user.User/EmailSend", in, out, opts...)
@@ -1121,6 +1261,7 @@ type UserServer interface {
 	Ping(context.Context, *PingReq) (*PongResp, error)
 	Register(context.Context, *RegisterReq) (*RegisterResp, error)
 	Login(context.Context, *LoginReq) (*LoginResp, error)
+	Info(context.Context, *InfoReq) (*InfoResp, error)
 	EmailSend(context.Context, *EmailSendReq) (*EmailSendResp, error)
 	EmailExist(context.Context, *EmailExistReq) (*EmailExistResp, error)
 }
@@ -1137,6 +1278,9 @@ func (*UnimplementedUserServer) Register(context.Context, *RegisterReq) (*Regist
 }
 func (*UnimplementedUserServer) Login(context.Context, *LoginReq) (*LoginResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}
+func (*UnimplementedUserServer) Info(context.Context, *InfoReq) (*InfoResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
 }
 func (*UnimplementedUserServer) EmailSend(context.Context, *EmailSendReq) (*EmailSendResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EmailSend not implemented")
@@ -1203,6 +1347,24 @@ func _User_Login_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).Info(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/user.User/Info",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).Info(ctx, req.(*InfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _User_EmailSend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EmailSendReq)
 	if err := dec(in); err != nil {
@@ -1254,6 +1416,10 @@ var _User_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Login",
 			Handler:    _User_Login_Handler,
+		},
+		{
+			MethodName: "Info",
+			Handler:    _User_Info_Handler,
 		},
 		{
 			MethodName: "EmailSend",

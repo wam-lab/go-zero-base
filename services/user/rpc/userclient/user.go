@@ -14,23 +14,26 @@ import (
 )
 
 type (
-	PongResp       = user.PongResp
+	RegisterResp   = user.RegisterResp
+	LoginReq       = user.LoginReq
+	EmailSendResp  = user.EmailSendResp
+	EmailExistResp = user.EmailExistResp
+	InfoReq        = user.InfoReq
+	InfoResp       = user.InfoResp
+	PingReq        = user.PingReq
 	UserModel      = user.UserModel
 	Token          = user.Token
-	LoginReq       = user.LoginReq
-	EmailExistReq  = user.EmailExistReq
-	EmailExistResp = user.EmailExistResp
-	PingReq        = user.PingReq
 	RegisterReq    = user.RegisterReq
-	RegisterResp   = user.RegisterResp
-	LoginResp      = user.LoginResp
 	EmailSendReq   = user.EmailSendReq
-	EmailSendResp  = user.EmailSendResp
+	EmailExistReq  = user.EmailExistReq
+	PongResp       = user.PongResp
+	LoginResp      = user.LoginResp
 
 	User interface {
 		Ping(ctx context.Context, in *PingReq) (*PongResp, error)
 		Register(ctx context.Context, in *RegisterReq) (*RegisterResp, error)
 		Login(ctx context.Context, in *LoginReq) (*LoginResp, error)
+		Info(ctx context.Context, in *InfoReq) (*InfoResp, error)
 		EmailSend(ctx context.Context, in *EmailSendReq) (*EmailSendResp, error)
 		EmailExist(ctx context.Context, in *EmailExistReq) (*EmailExistResp, error)
 	}
@@ -59,6 +62,11 @@ func (m *defaultUser) Register(ctx context.Context, in *RegisterReq) (*RegisterR
 func (m *defaultUser) Login(ctx context.Context, in *LoginReq) (*LoginResp, error) {
 	client := user.NewUserClient(m.cli.Conn())
 	return client.Login(ctx, in)
+}
+
+func (m *defaultUser) Info(ctx context.Context, in *InfoReq) (*InfoResp, error) {
+	client := user.NewUserClient(m.cli.Conn())
+	return client.Info(ctx, in)
 }
 
 func (m *defaultUser) EmailSend(ctx context.Context, in *EmailSendReq) (*EmailSendResp, error) {

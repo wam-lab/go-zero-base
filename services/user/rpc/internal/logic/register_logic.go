@@ -47,7 +47,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 		Nickname: in.Nickname,
 	}
 	tx := l.svcCtx.Db.Begin()
-	if err := tx.Create(&u).Error; err != nil && tx.RowsAffected > 0 {
+	if err := tx.Create(&u).Error; err != nil {
 		tx.Rollback()
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 		Email:    u.Email,
 		Password: password,
 	}
-	if err := tx.Create(&ua).Error; err != nil && tx.RowsAffected > 0 {
+	if err := tx.Create(&ua).Error; err != nil {
 		tx.Rollback()
 		return nil, err
 	}

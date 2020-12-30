@@ -36,6 +36,11 @@ func (s *UserServer) Login(ctx context.Context, in *user.LoginReq) (*user.LoginR
 	return l.Login(in)
 }
 
+func (s *UserServer) Info(ctx context.Context, in *user.InfoReq) (*user.InfoResp, error) {
+	l := logic.NewInfoLogic(ctx, s.svcCtx)
+	return l.Info(in)
+}
+
 func (s *UserServer) EmailSend(ctx context.Context, in *user.EmailSendReq) (*user.EmailSendResp, error) {
 	l := logic.NewEmailSendLogic(ctx, s.svcCtx)
 	return l.EmailSend(in)
