@@ -1,0 +1,22 @@
+info(
+    title: "jwt api"
+    desc: "timetable with micro service"
+    author: "yguilai"
+    email: "yguilai@foxmail.com"
+    version: "0.0.1"
+)
+
+type Token struct {
+    AccessToken string `json:"accessToken"`
+    AccessExpire int64 `json:"accessExpire"`
+    RefreshAfter int64 `json:"refreshAfter"`
+}
+
+@server(
+    group: auth
+)
+service timetable-api {
+    @handler tokenRefresh
+    post /auth/tokenRefresh () returns (Token)
+}
+

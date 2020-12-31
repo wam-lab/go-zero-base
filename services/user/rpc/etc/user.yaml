@@ -1,0 +1,23 @@
+Name: user.rpc
+ListenOn: '127.0.0.1:8003'
+DataSource: 'root:123456@tcp(127.0.0.1:3306)/timetable_micro?charset=utf8mb4&parseTime=True&loc=Local'
+RedisConf:
+  Host: '127.0.0.1:6379'
+  Pass: '123456'
+Etcd:
+  Hosts:
+    - '127.0.0.1:2379'
+  Key: user.rpc
+Nsq:
+  Addr: '127.0.0.1:4150'
+  Topic: email_send
+JwtRpc:
+  Etcd:
+    Hosts:
+      - '127.0.0.1:2379'
+    Key: jwt.rpc
+CaptchaRpc:
+  Etcd:
+    Hosts:
+      - '127.0.0.1:2379'
+    Key: captcha.rpc

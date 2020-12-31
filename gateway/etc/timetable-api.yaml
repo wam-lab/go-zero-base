@@ -1,0 +1,21 @@
+Name: timetable-api
+Host: 0.0.0.0
+Port: 8888
+Auth:
+  AccessSecret: 8voPF0R4HkV35eeB3h
+  AccessExpire: 604800
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+JwtRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: jwt.rpc
+CaptchaRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: captcha.rpc
