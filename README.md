@@ -1,4 +1,2 @@
-# Timetable-Micro
-微服务化课表, 基于go-zero框架
-
-当前分支是一个基础项目, 包含用户、jwt、验证码服务
+# go-zero-base
+基于go-zero的一个基本框架, 包含user服务, jwt服务, captcha服务
