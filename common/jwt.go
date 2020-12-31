@@ -2,7 +2,7 @@ package common
 
 import (
 	jwtGo "github.com/dgrijalva/jwt-go"
-	"github/yguilai/timetable-micro/common/errory"
+	"github.com/yguilai/timetable-micro/common/errory"
 )
 
 func ParseToken(token, secret string) (*jwtGo.Token, error) {

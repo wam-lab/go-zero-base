@@ -8,7 +8,7 @@ package captchaclient
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/captcha/rpc/captcha"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captcha"
 
 	"github.com/tal-tech/go-zero/zrpc"
 )

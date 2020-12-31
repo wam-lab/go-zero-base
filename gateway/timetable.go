@@ -4,11 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"github.com/tal-tech/go-zero/rest/httpx"
-	"github/yguilai/timetable-micro/common/errory"
+	"github.com/yguilai/timetable-micro/common/errory"
 
-	"github/yguilai/timetable-micro/gateway/internal/config"
-	"github/yguilai/timetable-micro/gateway/internal/handler"
-	"github/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/config"
+	"github.com/yguilai/timetable-micro/gateway/internal/handler"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/rest"

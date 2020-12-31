@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/jwt/rpc/jwt"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwt"
 
 	jwtGo "github.com/dgrijalva/jwt-go"
 	"github.com/tal-tech/go-zero/core/logx"
@@ -26,7 +26,7 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogi
 }
 
 func (l *CreateLogic) Create(in *jwt.JwtCreateReq) (*jwt.JwtCreateResp, error) {
-	ac := l.svcCtx.Config.Auth
+	ac := l.svcCtx.Config.JwtAuth
 
 	now := time.Now().Unix()
 	token, err := createJwtToken(now, ac.AccessExpire, ac.AccessSecret, in.Claims)

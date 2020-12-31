@@ -2,10 +2,10 @@ package logic
 
 import (
 	"context"
-	"github/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
 
-	"github/yguilai/timetable-micro/gateway/internal/svc"
-	"github/yguilai/timetable-micro/gateway/internal/types"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -30,10 +30,7 @@ func (l *CaptchaLogic) Captcha() (*types.CaptchaResp, error) {
 		return nil, err
 	}
 	return &types.CaptchaResp{
-		BaseResp: types.BaseResp{
-			Code: 0,
-			Msg:  "ok",
-		},
+		BaseResp: types.NewOkResp(),
 		Key:  captchaResp.Key,
 		Data: captchaResp.Data,
 	}, nil

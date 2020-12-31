@@ -3,9 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"github/yguilai/timetable-micro/gateway/internal/logic/captcha"
-	"github/yguilai/timetable-micro/gateway/internal/svc"
-	"github/yguilai/timetable-micro/gateway/internal/types"
+	"github.com/yguilai/timetable-micro/gateway/internal/logic/captcha"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/types"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
 )

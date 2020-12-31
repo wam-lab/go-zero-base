@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/user/rpc/internal/logic"
-	"github/yguilai/timetable-micro/services/user/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/user/rpc/user"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/logic"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/user/rpc/user"
 )
 
 type UserServer struct {
@@ -34,6 +34,11 @@ func (s *UserServer) Register(ctx context.Context, in *user.RegisterReq) (*user.
 func (s *UserServer) Login(ctx context.Context, in *user.LoginReq) (*user.LoginResp, error) {
 	l := logic.NewLoginLogic(ctx, s.svcCtx)
 	return l.Login(in)
+}
+
+func (s *UserServer) Info(ctx context.Context, in *user.InfoReq) (*user.InfoResp, error) {
+	l := logic.NewInfoLogic(ctx, s.svcCtx)
+	return l.Info(in)
 }
 
 func (s *UserServer) EmailSend(ctx context.Context, in *user.EmailSendReq) (*user.EmailSendResp, error) {

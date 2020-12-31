@@ -44,6 +44,8 @@ type LoginReq struct {
 	Email    string `json:"email"`
 	Type     int    `json:"type"`
 	Password string `json:"password"`
+	Key      string `json:"key"`
+	Code     string `json:"code"`
 }
 
 type LoginResp struct {
@@ -76,6 +78,7 @@ type UserBaseResp struct {
 	Email    string `json:"email"`
 	Nickname string `json:"nickname"`
 	Avatar   string `json:"avatar"`
+	OwnWords string `json:"ownWords"`
 }
 
 type UserInfoResp struct {

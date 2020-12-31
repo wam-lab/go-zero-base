@@ -2,8 +2,8 @@ package svc
 
 import (
 	"github.com/mojocn/base64Captcha"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/config"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/store"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/config"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/store"
 	"image/color"
 )
 
@@ -34,7 +34,7 @@ func newDriver(conf config.CaptchaConfig) (driver base64Captcha.Driver) {
 	case "number":
 		fallthrough
 	default:
-		driver = newDriverDigtal(conf)
+		driver = newDriverDigit(conf)
 	}
 	return
 }
@@ -72,7 +72,7 @@ func newDriverMath(conf config.CaptchaConfig, bg *color.RGBA, fs []string) base6
 	}).ConvertFonts()
 }
 
-func newDriverDigtal(conf config.CaptchaConfig) base64Captcha.Driver {
+func newDriverDigit(conf config.CaptchaConfig) base64Captcha.Driver {
 	return &base64Captcha.DriverDigit{
 		Height:   conf.Height,
 		Width:    conf.Width,

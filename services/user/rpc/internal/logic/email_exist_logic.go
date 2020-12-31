@@ -2,9 +2,10 @@ package logic
 
 import (
 	"context"
+	"github.com/yguilai/timetable-micro/services/user/model"
 
-	"github/yguilai/timetable-micro/services/user/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/user/rpc/user"
+	"github.com/yguilai/timetable-micro/services/user/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/user/rpc/user"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -24,7 +25,11 @@ func NewEmailExistLogic(ctx context.Context, svcCtx *svc.ServiceContext) *EmailE
 }
 
 func (l *EmailExistLogic) EmailExist(in *user.EmailExistReq) (*user.EmailExistResp, error) {
-	// todo: add your logic here and delete this line
+	var ec int64
+	l.svcCtx.Db.Model(new(model.User)).Where("email = ?", in.Email).Count(&ec)
+	if ec != 0 {
+		return &user.EmailExistResp{Exist: true}, nil
+	}
 
-	return &user.EmailExistResp{}, nil
+	return &user.EmailExistResp{Exist: false}, nil
 }

@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/captcha/rpc/captcha"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/logic"
-	"github/yguilai/timetable-micro/services/captcha/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/captcha"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/logic"
+	"github.com/yguilai/timetable-micro/services/captcha/rpc/internal/svc"
 )
 
 type CaptchaServer struct {

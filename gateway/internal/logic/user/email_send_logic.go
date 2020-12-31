@@ -2,9 +2,11 @@ package logic
 
 import (
 	"context"
+	"github.com/yguilai/timetable-micro/common/cons"
+	"github.com/yguilai/timetable-micro/services/user/rpc/userclient"
 
-	"github/yguilai/timetable-micro/gateway/internal/svc"
-	"github/yguilai/timetable-micro/gateway/internal/types"
+	"github.com/yguilai/timetable-micro/gateway/internal/svc"
+	"github.com/yguilai/timetable-micro/gateway/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -24,7 +26,16 @@ func NewEmailSendLogic(ctx context.Context, svcCtx *svc.ServiceContext) EmailSen
 }
 
 func (l *EmailSendLogic) EmailSend(req types.EmailSendReq) (*types.EmailSendResp, error) {
-	// todo: add your logic here and delete this line
+	resp, err := l.svcCtx.UserRpc.EmailSend(l.ctx, &userclient.EmailSendReq{Email: req.Email})
+	if err != nil {
+		return nil, err
+	}
 
-	return &types.EmailSendResp{}, nil
+	br := types.NewOkResp()
+	if !resp.Ok {
+		br = types.NewBaseResp(-1, cons.EmailSendingFailed)
+	}
+	return &types.EmailSendResp{
+		BaseResp: br,
+	}, nil
 }

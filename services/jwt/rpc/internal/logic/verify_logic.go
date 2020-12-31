@@ -3,9 +3,9 @@ package logic
 import (
 	"context"
 	jwtGo "github.com/dgrijalva/jwt-go"
-	"github/yguilai/timetable-micro/common"
-	"github/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/jwt/rpc/jwt"
+	"github.com/yguilai/timetable-micro/common"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwt"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -25,7 +25,7 @@ func NewVerifyLogic(ctx context.Context, svcCtx *svc.ServiceContext) *VerifyLogi
 }
 
 func (l *VerifyLogic) Verify(in *jwt.JwtVerifyReq) (*jwt.JwtVerifyResp, error) {
-	token, err := common.ParseToken(in.Token, l.svcCtx.Config.Auth.AccessSecret)
+	token, err := common.ParseToken(in.Token, l.svcCtx.Config.JwtAuth.AccessSecret)
 	if err != nil {
 		return nil, err
 	}

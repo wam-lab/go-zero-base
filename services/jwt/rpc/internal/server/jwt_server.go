@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/jwt/rpc/internal/logic"
-	"github/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
-	"github/yguilai/timetable-micro/services/jwt/rpc/jwt"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/internal/logic"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/internal/svc"
+	"github.com/yguilai/timetable-micro/services/jwt/rpc/jwt"
 )
 
 type JwtServer struct {

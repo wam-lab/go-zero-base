@@ -8,29 +8,32 @@ package userclient
 import (
 	"context"
 
-	"github/yguilai/timetable-micro/services/user/rpc/user"
+	"github.com/yguilai/timetable-micro/services/user/rpc/user"
 
 	"github.com/tal-tech/go-zero/zrpc"
 )
 
 type (
 	PingReq        = user.PingReq
-	Token          = user.Token
-	RegisterReq    = user.RegisterReq
+	InfoReq        = user.InfoReq
+	InfoResp       = user.InfoResp
 	RegisterResp   = user.RegisterResp
-	LoginReq       = user.LoginReq
-	LoginResp      = user.LoginResp
-	PongResp       = user.PongResp
-	UserModel      = user.UserModel
-	EmailSendReq   = user.EmailSendReq
 	EmailSendResp  = user.EmailSendResp
-	EmailExistReq  = user.EmailExistReq
 	EmailExistResp = user.EmailExistResp
+	UserModel      = user.UserModel
+	Token          = user.Token
+	LoginReq       = user.LoginReq
+	EmailSendReq   = user.EmailSendReq
+	PongResp       = user.PongResp
+	RegisterReq    = user.RegisterReq
+	LoginResp      = user.LoginResp
+	EmailExistReq  = user.EmailExistReq
 
 	User interface {
 		Ping(ctx context.Context, in *PingReq) (*PongResp, error)
 		Register(ctx context.Context, in *RegisterReq) (*RegisterResp, error)
 		Login(ctx context.Context, in *LoginReq) (*LoginResp, error)
+		Info(ctx context.Context, in *InfoReq) (*InfoResp, error)
 		EmailSend(ctx context.Context, in *EmailSendReq) (*EmailSendResp, error)
 		EmailExist(ctx context.Context, in *EmailExistReq) (*EmailExistResp, error)
 	}
@@ -59,6 +62,11 @@ func (m *defaultUser) Register(ctx context.Context, in *RegisterReq) (*RegisterR
 func (m *defaultUser) Login(ctx context.Context, in *LoginReq) (*LoginResp, error) {
 	client := user.NewUserClient(m.cli.Conn())
 	return client.Login(ctx, in)
+}
+
+func (m *defaultUser) Info(ctx context.Context, in *InfoReq) (*InfoResp, error) {
+	client := user.NewUserClient(m.cli.Conn())
+	return client.Info(ctx, in)
 }
 
 func (m *defaultUser) EmailSend(ctx context.Context, in *EmailSendReq) (*EmailSendResp, error) {
