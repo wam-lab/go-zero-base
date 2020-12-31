@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/timestamp.proto";
+
+message PingReq {
+  string ping = 1;
+}
+
+message PongResp {
+  string pong = 1;
+}
+
+message UserModel {
+  int64 id = 1;
+  string email = 2;
+  string nickname = 3;
+  string avatar = 4;
+  string ownWords = 5;
+  int32 gender = 6;
+  int32 state = 7;
+  google.protobuf.Timestamp createAt = 8;
+  google.protobuf.Timestamp updateAt = 9;
+}
+
+message Token {
+  string AccessToken = 1;
+  int64 AccessExpire = 2;
+  int64 RefreshAfter = 3;
+}
+
+// 注册
+message RegisterReq {
+  string email = 1;
+  string nickname = 2;
+  string password = 3;
+  string verify = 4;
+}
+
+message RegisterResp {
+  Token token = 1;
+  UserModel user = 2;
+}
+
+// 登录
+message LoginReq {
+  string email = 1;
+  int32 type = 2;
+  string password = 3;
+  string key = 4;
+  string code = 5;
+}
+
+message LoginResp {
+  Token token = 1;
+  UserModel user = 2;
+}
+
+// 邮箱验证码发送
+message EmailSendReq {
+  string email = 1;
+}
+
+message EmailSendResp {
+  bool ok = 1;
+}
+
+// 判断邮箱是否已注册
+message EmailExistReq {
+  string email = 1;
+}
+
+message EmailExistResp {
+  bool exist = 1;
+}
+
+message InfoReq {
+  int64 id = 1;
+}
+
+message InfoResp {
+  UserModel user = 1;
+}
+
+service User {
+  rpc Ping(PingReq) returns(PongResp);
+  rpc Register(RegisterReq) returns(RegisterResp);
+  rpc Login(LoginReq) returns(LoginResp);
+  rpc Info(InfoReq) returns(InfoResp);
+  rpc EmailSend(EmailSendReq) returns(EmailSendResp);
+  rpc EmailExist(EmailExistReq) returns(EmailExistResp);
+}

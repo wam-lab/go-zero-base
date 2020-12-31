@@ -1,0 +1,45 @@
+info(
+    title: "captcha api"
+    desc: "timetable with micro service"
+    author: "yguilai"
+    email: "yguilai@foxmail.com"
+    version: "0.0.1"
+)
+
+type BaseResp struct {
+    Code int `json:"code"`
+    Msg string `json:"msg"`
+}
+
+type (
+    CaptchaReq struct {
+    }
+
+    CaptchaResp struct {
+        BaseResp
+        Key string `json:"key"`
+        Data string `json:"data"` // base64编码的图片验证码
+    }
+
+        // 图片验证码验证请求
+    CaptchaVerifyReq struct {
+        Key string `json:"key"`
+        Code string `json:"code"`
+    }
+
+    CaptchaVerifyResp struct {
+        BaseResp
+    }
+)
+
+@server(
+    group: captcha
+)
+service timetable-api {
+    @handler captcha
+    get /captcha () returns (CaptchaResp)
+
+    @handler captchaVerify
+    get /captcha/verify (CaptchaVerifyReq) returns (CaptchaVerifyResp)
+}
+

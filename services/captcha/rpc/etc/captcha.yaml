@@ -1,0 +1,18 @@
+Name: captcha.rpc
+ListenOn: 127.0.0.1:8001
+Captcha:
+  # math | string | number
+  Driver: math
+  # character length when driver is number
+  # Length: 4
+  Expire: 180
+  Width: 200
+  Height: 80
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: captcha.rpc
+Redis:
+  Host: 127.0.0.1:6379
+  Pass: '123456'
+  Type: node
