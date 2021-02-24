@@ -1,0 +1,19 @@
+Name: emailJob
+Host: 0.0.0.0
+Port: 8889
+
+Mail:
+  Host: smtp.qq.com
+  Port: 465
+  User: yguilai@foxmail.com
+  Pass: xxxxxxx
+
+DqConf:
+  Beanstalks:
+    - Endpoint: 192.168.169.2:11301
+      Tube: tube1
+    - Endpoint: 192.168.169.2:11302
+      Tube: tube2
+  Redis:
+    Host: 192.168.169.2:6371
+    Type: node

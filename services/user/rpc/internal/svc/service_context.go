@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"github.com/nsqio/go-nsq"
+	"github.com/tal-tech/go-queue/dq"
 	"github.com/tal-tech/go-zero/core/stores/redis"
 	"github.com/tal-tech/go-zero/zrpc"
 	"github.com/yguilai/timetable-micro/services/captcha/rpc/captchaclient"
@@ -17,7 +17,7 @@ type ServiceContext struct {
 	Conf       config.Config
 	Db         *gorm.DB
 	Redis      *redis.Redis
-	Producer   *nsq.Producer
+	Producer   dq.Producer
 	JwtRpc     jwtclient.Jwt
 	CaptchaRpc captchaclient.Captcha
 }
@@ -34,17 +34,11 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		panic(err)
 	}
 
-	// email producer
-	producer, err := newNsqProducer(c.Nsq.Addr)
-	if err != nil {
-		panic(err)
-	}
-
 	return &ServiceContext{
 		Conf:       c,
 		Db:         db,
 		Redis:      c.RedisConf.NewRedis(),
-		Producer:   producer,
+		Producer:   dq.NewProducer(c.Beanstalks),
 		JwtRpc:     jwtclient.NewJwt(zrpc.MustNewClient(c.JwtRpc)),
 		CaptchaRpc: captchaclient.NewCaptcha(zrpc.MustNewClient(c.CaptchaRpc)),
 	}
@@ -58,9 +52,4 @@ func newGorm(dataSource string) (*gorm.DB, error) {
 			SingularTable: true,
 		},
 	})
-}
-
-func newNsqProducer(addr string) (*nsq.Producer, error) {
-	c := nsq.NewConfig()
-	return nsq.NewProducer(addr, c)
 }

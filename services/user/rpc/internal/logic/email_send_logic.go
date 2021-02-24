@@ -44,15 +44,15 @@ func (l *EmailSendLogic) EmailSend(in *user.EmailSendReq) (*user.EmailSendResp, 
 	// build send content
 	ctt, err := json.Marshal(&common.EmailContent{
 		Target: in.Email,
-		Title:  "[课表] 验证码",
+		Title:  "验证码",
 		Body:   fmt.Sprintf("您的邮箱验证码是: <b>%s</b>", code),
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	// publish to email queue
-	err = l.svcCtx.Producer.Publish(l.svcCtx.Conf.Nsq.Topic, ctt)
+	// publish email to beanstalkd
+	_, err = l.svcCtx.Producer.Delay(ctt, time.Millisecond*100)
 	if err != nil {
 		return nil, err
 	}
