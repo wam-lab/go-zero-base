@@ -1,0 +1,20 @@
+syntax = "v1"
+
+info(
+	title: "邮件发送消息任务"
+	desc: "邮件发送消息任务"
+	author: "燕归来"
+	email: "yguilai@foxmail.com"
+)
+
+type (
+	EmailSendMessageReq {
+	}
+	EmailSendMessageResp {
+	}
+)
+
+service emailJob {
+	@handler emailSendMessageHandler
+	post /emailSendMessage (EmailSendMessageReq) returns (EmailSendMessageResp)
+}

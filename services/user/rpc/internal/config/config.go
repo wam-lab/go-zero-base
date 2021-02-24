@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/tal-tech/go-queue/dq"
 	"github.com/tal-tech/go-zero/core/stores/redis"
 	"github.com/tal-tech/go-zero/zrpc"
 )
@@ -15,4 +16,5 @@ type Config struct {
 	}
 	JwtRpc     zrpc.RpcClientConf
 	CaptchaRpc zrpc.RpcClientConf
+	Beanstalks []dq.Beanstalk
 }
