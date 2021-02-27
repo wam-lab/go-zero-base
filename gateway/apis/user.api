@@ -1,122 +1,121 @@
 info(
-    title: "user api"
-    desc: "timetable with micro service"
-    author: "yguilai"
-    email: "yguilai@foxmail.com"
-    version: "0.0.3"
+	title: "user api"
+	desc: "timetable with micro service"
+	author: "yguilai"
+	email: "yguilai@foxmail.com"
+	version: "0.0.3"
 )
 
-type BaseResp struct {
-    Code int `json:"code"`
-    Msg string `json:"msg"`
+type BaseResp {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
 }
 
-type Token struct {
-    AccessToken string `json:"accessToken"`
-    AccessExpire int64 `json:"accessExpire"`
-    RefreshAfter int64 `json:"refreshAfter"`
+type Token {
+	AccessToken  string `json:"accessToken"`
+	AccessExpire int64  `json:"accessExpire"`
+	RefreshAfter int64  `json:"refreshAfter"`
 }
 
-type UserBaseResp struct {
-    Id int64 `json:"id"`
-    Email string `json:"email"`
-    Nickname string `json:"nickname"`
-    Avatar string `json:"avatar"`
-    OwnWords string `json:"ownWords"`
+type UserBaseResp {
+	Id       int64  `json:"id"`
+	Email    string `json:"email"`
+	Nickname string `json:"nickname"`
+	Avatar   string `json:"avatar"`
+	OwnWords string `json:"ownWords"`
 }
 
 type (
-    // 注册请求
-    RegisterReq struct {
-        Email string `json:"email"`
-        Nickname string `json:"nickname"`
-        Password string `json:"password"`
-        Verify string `json:"verify"`
-    }
+	// 注册请求
+	RegisterReq {
+		Email    string `json:"email"`
+		Nickname string `json:"nickname"`
+		Password string `json:"password"`
+		Verify   string `json:"verify"`
+	}
 
-    RegisterResp struct {
-        BaseResp
-        Token Token `json:"token"`
-        User UserBaseResp `json:"user"`
-    }
+	RegisterResp {
+		BaseResp
+		Token Token        `json:"token"`
+		User  UserBaseResp `json:"user"`
+	}
 
-        // 登录请求
-    LoginReq struct {
-        Email string `json:"email"`
-        Type int `json:"type"`
-        Password string `json:"password"`
-        Key string `json:"key"`
-        Code string `json:"code"`
-    }
+	// 登录请求
+	LoginReq {
+		Email    string `json:"email"`
+		Type     int    `json:"type"`
+		Password string `json:"password"`
+		Key      string `json:"key"`
+		Code     string `json:"code"`
+	}
 
-    LoginResp struct {
-        BaseResp
-        Token Token `json:"token"`
-        User UserBaseResp `json:"user"`
-    }
+	LoginResp {
+		BaseResp
+		Token Token        `json:"token"`
+		User  UserBaseResp `json:"user"`
+	}
 
-        // 获取用户信息
-    UserInfoResp struct {
-        UserBaseResp
-    }
+	// 获取用户信息
+	UserInfoResp {
+		UserBaseResp
+	}
 
-        // 邮箱验证码发送
-    EmailSendReq struct {
-        Email string `json:"email"`
-    }
+	// 邮箱验证码发送
+	EmailSendReq {
+		Email string `json:"email"`
+	}
 
-    EmailSendResp struct {
-        BaseResp
-    }
+	EmailSendResp {
+		BaseResp
+	}
 
-        // 邮箱验证是否已存在
-    EmailExistReq struct {
-        Email string `json:"email"`
-    }
+	// 邮箱验证是否已存在
+	EmailExistReq {
+		Email string `json:"email"`
+	}
 
-    EmailExistResp struct {
-        BaseResp
-    }
+	EmailExistResp {
+		BaseResp
+	}
 )
-
 
 @server(
-    group: user
+	group: user
 )
 service timetable-api {
-    @doc(
-        summary : "注册接口"
-    )
-    @handler register
-    post /user/register (RegisterReq) returns (RegisterResp)
-
-    @doc(
-        summary : "登录接口"
-    )
-    @handler login
-    post /user/login (LoginReq) returns (LoginResp)
-
-    @doc(
-        summary : "邮箱验证码发送接口"
-    )
-    @handler emailSend
-    post /user/emailSend (EmailSendReq) returns (EmailSendResp)
-
-    @doc(
-        summary : "验证邮箱存在接口"
-    )
-    @handler emailExist
-    post /user/emailExist (EmailExistReq) returns (EmailExistResp)
+	@doc(
+		summary : "注册接口"
+	)
+	@handler register
+	post /user/register (RegisterReq) returns (RegisterResp)
+	
+	@doc(
+		summary : "登录接口"
+	)
+	@handler login
+	post /user/login (LoginReq) returns (LoginResp)
+	
+	@doc(
+		summary : "邮箱验证码发送接口"
+	)
+	@handler emailSend
+	post /user/emailSend (EmailSendReq) returns (EmailSendResp)
+	
+	@doc(
+		summary : "验证邮箱存在接口"
+	)
+	@handler emailExist
+	post /user/emailExist (EmailExistReq) returns (EmailExistResp)
 }
 
 @server(
-    group: user
-    jwt: Auth
+	group: user
+	jwt: Auth
 )
 service timetable-api {
-    @doc(
-        summary : "用户简要信息接口"
-    )
-    @handler userInfo
-    get /user/:id () returns (UserInfoResp)
+	@doc(
+		summary : "用户简要信息接口"
+	)
+	@handler userInfo
+	get /user/:id () returns (UserInfoResp)
 }

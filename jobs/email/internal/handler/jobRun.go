@@ -1,12 +1,12 @@
 package handler
 
 import (
-	"github.com/yguilai/timetable-micro/common/xgo"
+	"github.com/tal-tech/go-zero/core/threading"
 	"github.com/yguilai/timetable-micro/jobs/email/internal/svc"
 )
 
-func JobRun(svc *svc.ServiceContext)  {
-	xgo.Go(func() {
+func JobRun(svc *svc.ServiceContext) {
+	threading.GoSafe(func() {
 		emailSendMessageHandler(svc)
 	})
 }

@@ -1,30 +1,28 @@
 Name: user.rpc
-ListenOn: '127.0.0.1:8003'
-DataSource: 'root:123456@tcp(127.0.0.1:3306)/timetable_micro?charset=utf8mb4&parseTime=True&loc=Local'
+ListenOn: 0.0.0.0:8003
+DataSource: root:123456@tcp(mysql:3306)/timetable_micro?charset=utf8mb4&parseTime=True&loc=Local
 RedisConf:
-  Host: '127.0.0.1:6379'
-  Pass: '123456'
+  Host: redis:6379
 Etcd:
   Hosts:
-    - '127.0.0.1:2379'
+    - etcd:2379
   Key: user.rpc
 Nsq:
-  Addr: '127.0.0.1:4150'
+  Addr: etcd:4150
   Topic: email_send
 JwtRpc:
   Etcd:
     Hosts:
-      - '127.0.0.1:2379'
+      - etcd:2379
     Key: jwt.rpc
 CaptchaRpc:
   Etcd:
     Hosts:
-      - '127.0.0.1:2379'
+      - etcd:2379
     Key: captcha.rpc
 
-DqConf:
-  Beanstalks:
-    - Endpoint: 192.168.169.2:11301
-      Tube: tube1
-    - Endpoint: 192.168.169.2:11302
-      Tube: tube2
+Beanstalks:
+  - Endpoint: beanstalkd1:11301
+    Tube: tube1
+  - Endpoint: beanstalkd2:11302
+    Tube: tube2
