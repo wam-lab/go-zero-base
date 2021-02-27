@@ -1,0 +1,167 @@
+version: "3.8"
+services: 
+  reverse-proxy:
+    image: traefik:v2.2
+    command: 
+      - "--api.insecure=true"
+      - "--providers.docker"
+      - "--providers.docker.exposedByDefault=false"
+    ports: 
+      - "80:80"
+      - "8888:8888"
+    volumes: 
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks: 
+      - gzbnet
+  # etcd
+  gbz-etcd:
+    hostname: etcd
+    image: bitnami/etcd:3
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    user: root
+    volumes:
+      - "/var/docker/etcd/data:/opt/bitnami/etcd/data"
+    environment:
+      - "ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379"
+      - "ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379"
+      - "ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380"
+      - "ETCD_INITIAL_ADVERTISE_PEER_URLS=http://0.0.0.0:2380"
+      - "ALLOW_NONE_AUTHENTICATION=yes"
+      - "ETCD_INITIAL_CLUSTER=node1=http://0.0.0.0:2380"
+      - "ETCD_NAME=node1"
+      - "ETCD_DATA_DIR=/opt/bitnami/etcd/data"
+    networks:
+      - gzbnet
+  # beanstalkd
+  gbz-beanstalkd-1:
+    hostname: beanstalkd1
+    image: schickling/beanstalkd
+    volumes: 
+      - beanstalkd1_data:/var/lib/beanstald
+    ports: 
+      - "11301:11300"
+    networks:
+      - gzbnet
+  gbz-beanstalkd-2:
+    hostname: beanstalkd2
+    image: schickling/beanstalkd
+    volumes: 
+      - beanstalkd2_data:/var/lib/beanstald
+    ports: 
+      - "11302:11300"
+    networks:
+      - gzbnet
+  # reids
+  gbz-redis: 
+    hostname: redis
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - "redis_data:/data"
+    networks: 
+      - gzbnet
+  gbz-mysql:
+    hostname: mysql
+    image: docker.io/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=timetable_micro
+    volumes:
+      - ./mysql/conf/my.conf:/etc/my.conf
+    #   - ./mysql/logs:/logs
+    #   - ./mysql/data:/var/lib/mysql
+    ports: 
+      - 3306:3306
+    networks: 
+      - gzbnet
+  # email job
+  email:
+    build: 
+      context: .
+      dockerfile: jobs/email/Dockerfile
+    image: email
+    volumes: 
+      - "./jobs/email/etc:/app/etc"
+    expose: 
+      - "8889"
+    networks: 
+      - gzbnet
+    depends_on:
+      - gbz-etcd 
+      - gbz-redis
+  # captcha
+  captcha:
+    build: 
+      context: .
+      dockerfile: services/captcha/rpc/Dockerfile
+    image: captcha
+    volumes: 
+      - "./services/captcha/rpc/etc:/app/etc"
+    expose: 
+      - "8001"
+    networks: 
+      - gzbnet
+    depends_on:
+      - gbz-etcd 
+  # jwt
+  jwt:
+    build: 
+      context: .
+      dockerfile: services/jwt/rpc/Dockerfile
+    image: jwt
+    volumes: 
+      - "./services/jwt/rpc/etc:/app/etc"
+    expose: 
+      - "8002"
+    networks: 
+      - gzbnet
+    depends_on:
+      - gbz-etcd 
+  # user
+  user:
+    build: 
+      context: .
+      dockerfile: services/user/rpc/Dockerfile
+    image: user
+    volumes: 
+      - "./services/user/rpc/etc:/app/etc"
+    expose: 
+      - "8003"
+    networks: 
+      - gzbnet
+    depends_on:
+      - gbz-mysql
+      - email
+      - captcha
+      - jwt
+  # gateway
+  gateway:
+    build: 
+      context: .
+      dockerfile: gateway/Dockerfile
+    image: gateway
+    volumes: 
+      - "./gateway/etc:/app/etc"
+    expose: 
+      - "8888"
+    labels: 
+      - "traefik.enable=true"
+      - "traefik.http.routers.account.rule=Host(`memrizr.test`) && PathPrefix(`/`)"
+    networks: 
+      - gzbnet
+    depends_on:
+      - captcha
+      - jwt
+      - user
+# network
+networks: 
+  gzbnet:
+    name: gzbnet
+volumes:
+  redis_data:
+  beanstalkd1_data:
+  beanstalkd2_data:

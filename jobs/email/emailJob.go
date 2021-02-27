@@ -2,13 +2,13 @@ package main
 
 import (
 	"flag"
-	"fmt"
 
 	"github.com/yguilai/timetable-micro/jobs/email/internal/config"
 	"github.com/yguilai/timetable-micro/jobs/email/internal/handler"
 	"github.com/yguilai/timetable-micro/jobs/email/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/conf"
+	"github.com/tal-tech/go-zero/core/logx"
 	"github.com/tal-tech/go-zero/rest"
 )
 
@@ -26,6 +26,6 @@ func main() {
 
 	handler.JobRun(ctx)
 
-	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
+	logx.Infof("Starting server at %s:%d...\n", c.Host, c.Port)
 	server.Start()
 }

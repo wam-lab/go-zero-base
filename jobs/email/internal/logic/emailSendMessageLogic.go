@@ -29,7 +29,7 @@ func (l *EmailSendMessageLogic) EmailSendMessage() error {
 		var mail common.EmailContent
 		err := json.Unmarshal(body, &mail)
 		if err != nil {
-			logx.Error(err)
+			l.Logger.Error(err)
 			return
 		}
 
@@ -40,7 +40,7 @@ func (l *EmailSendMessageLogic) EmailSendMessage() error {
 		m.SetBody("text/html", mail.Body)
 
 		if err := l.svcCtx.Dialer.DialAndSend(m); err != nil {
-			logx.Error(err)
+			l.Logger.Error(err)
 			return
 		}
 	})

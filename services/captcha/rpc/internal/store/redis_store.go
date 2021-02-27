@@ -2,9 +2,10 @@ package store
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/tal-tech/go-zero/core/logx"
 	"github.com/tal-tech/go-zero/core/stores/redis"
-	"strings"
 )
 
 type RedisStore struct {
@@ -24,7 +25,7 @@ func (s *RedisStore) Set(id string, value string) {
 	err := s.redis.Setex(id, value, s.expire)
 	if err != nil {
 		logx.Errorf(fmt.Sprintf("RedisStore set %s:%s failed, err: %v", id, value, err))
-		return
+		panic(err)
 	}
 }
 
@@ -37,7 +38,7 @@ func (s *RedisStore) Get(id string, clear bool) string {
 	val, err := s.redis.Get(id)
 	if err != nil {
 		logx.Errorf(fmt.Sprintf("RedisStore get %s failed, err: %v", id, err))
-		return val
+		panic(err)
 	}
 
 	if clear {

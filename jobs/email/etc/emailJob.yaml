@@ -10,10 +10,10 @@ Mail:
 
 DqConf:
   Beanstalks:
-    - Endpoint: 192.168.169.2:11301
-      Tube: tube1
-    - Endpoint: 192.168.169.2:11302
-      Tube: tube2
+    - Endpoint: beanstalkd1:11300
+      Tube: tube
+    - Endpoint: beanstalkd2:11300
+      Tube: tube
   Redis:
-    Host: 192.168.169.2:6371
+    Host: redis:6379
     Type: node
