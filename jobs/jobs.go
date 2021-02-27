@@ -2,6 +2,9 @@ package main
 
 import (
 	"flag"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/yguilai/timetable-micro/jobs/email/internal/config"
 	"github.com/yguilai/timetable-micro/jobs/email/internal/handler"
@@ -9,6 +12,7 @@ import (
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/tal-tech/go-zero/core/service"
 	"github.com/tal-tech/go-zero/rest"
 )
 
@@ -21,11 +25,18 @@ func main() {
 	conf.MustLoad(*configFile, &c)
 
 	ctx := svc.NewServiceContext(c)
-	server := rest.MustNewServer(c.RestConf)
-	defer server.Stop()
 
-	handler.JobRun(ctx)
+	group := service.NewServiceGroup()
+	handler.RegisterJob(ctx, group)
 
-	logx.Infof("Starting server at %s:%d...\n", c.Host, c.Port)
-	server.Start()
+	sign := make(chan os.Signal)
+	signal.Notify(sign, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT)
+	for {
+		s := <- sign
+		logx.Infof("Got a signal %s", s.String())
+		switch s {
+			case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
+
+		}
+	}
 }
